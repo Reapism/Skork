@@ -1,0 +1,9 @@
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\bin\Debug\Skork.exe.config
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\bin\Debug\Skork.exe
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\bin\Debug\Skork.pdb
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.csprojResolveAssemblyReference.cache
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.frmSkork.resources
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.Properties.Resources.resources
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.csproj.GenerateResource.Cache
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.exe
+C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.pdb
