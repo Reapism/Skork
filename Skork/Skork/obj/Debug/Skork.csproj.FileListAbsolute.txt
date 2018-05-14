@@ -7,3 +7,13 @@ C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.Properti
 C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.csproj.GenerateResource.Cache
 C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.exe
 C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.pdb
+E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.exe.config
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.exe
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.pdb
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csprojResolveAssemblyReference.cache
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frmSkork.resources
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.Properties.Resources.resources
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csproj.GenerateResource.Cache
+E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.exe
+E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.pdb
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frm.frmUpdate.resources
