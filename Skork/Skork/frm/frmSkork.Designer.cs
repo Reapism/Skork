@@ -111,16 +111,18 @@
             this.btnCTXCompileDebug.Name = "btnCTXCompileDebug";
             this.btnCTXCompileDebug.Size = new System.Drawing.Size(170, 22);
             this.btnCTXCompileDebug.Text = "Compile && Debug";
+            this.btnCTXCompileDebug.Click += new System.EventHandler(this.btnCTXCompileDebug_Click);
             // 
             // btnCTXSave
             // 
             this.btnCTXSave.Name = "btnCTXSave";
             this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
             this.btnCTXSave.Text = "Save";
+            this.btnCTXSave.Click += new System.EventHandler(this.btnCTXSave_Click);
             // 
             // picSyntax
             // 
-            this.picSyntax.BackColor = System.Drawing.Color.Red;
+            this.picSyntax.BackColor = System.Drawing.Color.Transparent;
             this.picSyntax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picSyntax.Location = new System.Drawing.Point(3, 16);
             this.picSyntax.Name = "picSyntax";

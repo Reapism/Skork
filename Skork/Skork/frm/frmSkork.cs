@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Skork.ui;
 using Skork.util;
+using System.Reflection;
 
 namespace Skork {
 
@@ -25,8 +26,7 @@ namespace Skork {
             Point frmSize = new Point(750, 500);
             this.Width = frmSize.X;
             this.Height = frmSize.Y;
-
-            this.Text = "Skork Application - ";
+                      
             UserInterface.drawMain(this, ref frmSize);
         }
 
@@ -39,11 +39,22 @@ namespace Skork {
 
         private void frmSkork_Load(object sender, EventArgs e) {
             addHandlers();
+            addToLoad();
         }
 
         private void addHandlers() {
             lblZoom.MouseDown += lblZoom_MouseDown;
             ctxZoomFactor.ItemClicked += ctxZoomFactor_ItemClicked;
+        }
+
+        private void addToLoad() {
+            string v = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = "Skork Application - " + v;
+            this.txtCode.Text = 
+                "/**\n" +
+                "Skork v: " + v + '\n' +
+                "@author iReapism\n" +
+                "*/\n";
         }
 
         private void frmSkork_Resize(object sender, EventArgs e) {
@@ -77,7 +88,7 @@ namespace Skork {
                         return;
                     } else {
                         if (e.ClickedItem.Tag.ToString().Contains('.')) {
-                            float zmFct = float.Parse(e.ClickedItem.Tag.ToString()); // explicit cast 
+                            float zmFct = float.Parse(e.ClickedItem.Tag.ToString());
                             txtCode.ZoomFactor = zmFct;
                             updateZoomFactor();
                         } else {
@@ -104,7 +115,7 @@ namespace Skork {
                 ToolStripStatusLabel lbl = (ToolStripStatusLabel)sender;
                 // sender = (Label) sender; // explicit cast 
                 ctxZoomFactor.Show(this, stsMain.Location.X, stsMain.Location.Y + stsMain.Height);
-                lbl.ForeColor = Color.Red;
+                //lbl.ForeColor = Color.Red;
             }
             updateZoomFactor();
         }
@@ -122,11 +133,17 @@ namespace Skork {
 
         private void btnCTXCompile_Click(object sender, EventArgs e) {
             OutlineBox o = new OutlineBox();
-            o.outlineControl(ref picSyntax, 1, 5);
+            o.outlineControl(ref picSyntax, 1, 3);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e) {
+        private void btnCTXCompileDebug_Click(object sender, EventArgs e) {
+            OutlineBox o = new OutlineBox();
+            o.outlineControl(ref picSyntax, 2, 3);
+        }
 
+        private void btnCTXSave_Click(object sender, EventArgs e) {
+            OutlineBox o = new OutlineBox();
+            o.outlineControl(ref picSyntax, 3, 3);
         }
     }
 }
