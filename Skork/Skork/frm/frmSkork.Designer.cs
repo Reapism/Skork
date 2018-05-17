@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSkork));
             this.grpCode = new System.Windows.Forms.GroupBox();
             this.txtCode = new System.Windows.Forms.RichTextBox();
+            this.ctxCode = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnCTXCompile = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCTXCompileDebug = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCTXSave = new System.Windows.Forms.ToolStripMenuItem();
             this.picSyntax = new System.Windows.Forms.PictureBox();
             this.grpOutput = new System.Windows.Forms.GroupBox();
             this.stsMain = new System.Windows.Forms.StatusStrip();
@@ -42,10 +46,6 @@
             this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
-            this.ctxCode = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnCTXCompile = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCTXCompileDebug = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCTXSave = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxZoomFactor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn100 = new System.Windows.Forms.ToolStripMenuItem();
             this.btn110 = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,34 +58,65 @@
             this.btn500 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGenerateMoreZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.grpCode.SuspendLayout();
+            this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
             this.stsMain.SuspendLayout();
             this.tsMain.SuspendLayout();
-            this.ctxCode.SuspendLayout();
             this.ctxZoomFactor.SuspendLayout();
+            this.tblMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpCode
             // 
             this.grpCode.Controls.Add(this.txtCode);
             this.grpCode.Controls.Add(this.picSyntax);
-            this.grpCode.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grpCode.Location = new System.Drawing.Point(0, 25);
+            this.grpCode.Location = new System.Drawing.Point(3, 3);
             this.grpCode.Name = "grpCode";
-            this.grpCode.Size = new System.Drawing.Size(327, 414);
+            this.grpCode.Size = new System.Drawing.Size(361, 414);
             this.grpCode.TabIndex = 1;
             this.grpCode.TabStop = false;
-            this.grpCode.Text = "groupBox1";
+            this.grpCode.Text = "Code:";
             // 
             // txtCode
             // 
+            this.txtCode.ContextMenuStrip = this.ctxCode;
             this.txtCode.Location = new System.Drawing.Point(6, 19);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(315, 389);
+            this.txtCode.Size = new System.Drawing.Size(349, 389);
             this.txtCode.TabIndex = 1;
             this.txtCode.Text = "/**\nSkork - v\n@author iReapism\n*/";
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
+            this.txtCode.MouseHover += new System.EventHandler(this.txtCode_MouseHover);
+            // 
+            // ctxCode
+            // 
+            this.ctxCode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCTXCompile,
+            this.btnCTXCompileDebug,
+            this.btnCTXSave});
+            this.ctxCode.Name = "ctxCode";
+            this.ctxCode.Size = new System.Drawing.Size(171, 70);
+            // 
+            // btnCTXCompile
+            // 
+            this.btnCTXCompile.Name = "btnCTXCompile";
+            this.btnCTXCompile.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXCompile.Text = "Compile";
+            this.btnCTXCompile.Click += new System.EventHandler(this.btnCTXCompile_Click);
+            // 
+            // btnCTXCompileDebug
+            // 
+            this.btnCTXCompileDebug.Name = "btnCTXCompileDebug";
+            this.btnCTXCompileDebug.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXCompileDebug.Text = "Compile && Debug";
+            // 
+            // btnCTXSave
+            // 
+            this.btnCTXSave.Name = "btnCTXSave";
+            this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXSave.Text = "Save";
             // 
             // picSyntax
             // 
@@ -93,19 +124,18 @@
             this.picSyntax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picSyntax.Location = new System.Drawing.Point(3, 16);
             this.picSyntax.Name = "picSyntax";
-            this.picSyntax.Size = new System.Drawing.Size(321, 395);
+            this.picSyntax.Size = new System.Drawing.Size(355, 395);
             this.picSyntax.TabIndex = 0;
             this.picSyntax.TabStop = false;
             // 
             // grpOutput
             // 
-            this.grpOutput.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grpOutput.Location = new System.Drawing.Point(367, 25);
+            this.grpOutput.Location = new System.Drawing.Point(370, 3);
             this.grpOutput.Name = "grpOutput";
-            this.grpOutput.Size = new System.Drawing.Size(367, 414);
+            this.grpOutput.Size = new System.Drawing.Size(361, 414);
             this.grpOutput.TabIndex = 2;
             this.grpOutput.TabStop = false;
-            this.grpOutput.Text = "groupBox2";
+            this.grpOutput.Text = "Output:";
             // 
             // stsMain
             // 
@@ -125,6 +155,7 @@
             // 
             // tsMain
             // 
+            this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFile,
             this.btnEdit,
@@ -178,33 +209,6 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(23, 22);
             this.btnSettings.Text = "Settings";
-            // 
-            // ctxCode
-            // 
-            this.ctxCode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCTXCompile,
-            this.btnCTXCompileDebug,
-            this.btnCTXSave});
-            this.ctxCode.Name = "ctxCode";
-            this.ctxCode.Size = new System.Drawing.Size(171, 70);
-            // 
-            // btnCTXCompile
-            // 
-            this.btnCTXCompile.Name = "btnCTXCompile";
-            this.btnCTXCompile.Size = new System.Drawing.Size(170, 22);
-            this.btnCTXCompile.Text = "Compile";
-            // 
-            // btnCTXCompileDebug
-            // 
-            this.btnCTXCompileDebug.Name = "btnCTXCompileDebug";
-            this.btnCTXCompileDebug.Size = new System.Drawing.Size(170, 22);
-            this.btnCTXCompileDebug.Text = "Compile && Debug";
-            // 
-            // btnCTXSave
-            // 
-            this.btnCTXSave.Name = "btnCTXSave";
-            this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
-            this.btnCTXSave.Text = "Save";
             // 
             // ctxZoomFactor
             // 
@@ -300,28 +304,43 @@
             this.btnCustomZoom.Tag = "Custom...";
             this.btnCustomZoom.Text = "Custom...";
             // 
+            // tblMain
+            // 
+            this.tblMain.ColumnCount = 2;
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMain.Controls.Add(this.grpOutput, 1, 0);
+            this.tblMain.Controls.Add(this.grpCode, 0, 0);
+            this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblMain.Location = new System.Drawing.Point(0, 25);
+            this.tblMain.Name = "tblMain";
+            this.tblMain.RowCount = 1;
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMain.Size = new System.Drawing.Size(734, 436);
+            this.tblMain.TabIndex = 5;
+            // 
             // frmSkork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
-            this.Controls.Add(this.grpOutput);
-            this.Controls.Add(this.grpCode);
-            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.stsMain);
+            this.Controls.Add(this.tblMain);
+            this.Controls.Add(this.tsMain);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "frmSkork";
-            this.Text = "Skork Application";
+            this.Text = "Skork Application - ";
             this.Load += new System.EventHandler(this.frmSkork_Load);
             this.Resize += new System.EventHandler(this.frmSkork_Resize);
             this.grpCode.ResumeLayout(false);
+            this.ctxCode.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).EndInit();
             this.stsMain.ResumeLayout(false);
             this.stsMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
-            this.ctxCode.ResumeLayout(false);
             this.ctxZoomFactor.ResumeLayout(false);
+            this.tblMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,6 +375,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnGenerateMoreZoom;
         private System.Windows.Forms.ToolStripMenuItem btnCustomZoom;
         private System.Windows.Forms.ToolStripStatusLabel lblZoom;
+        private System.Windows.Forms.TableLayoutPanel tblMain;
     }
 }
 

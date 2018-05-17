@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Skork.ui;
+using Skork.util;
 
 namespace Skork {
 
@@ -24,6 +25,8 @@ namespace Skork {
             Point frmSize = new Point(750, 500);
             this.Width = frmSize.X;
             this.Height = frmSize.Y;
+
+            this.Text = "Skork Application - ";
             UserInterface.drawMain(this, ref frmSize);
         }
 
@@ -44,9 +47,8 @@ namespace Skork {
         }
 
         private void frmSkork_Resize(object sender, EventArgs e) {
-            int x = this.Width,
-                y = this.Height;
-
+            Point p = new Point(this.Width, this.Height);
+            UserInterface.drawMain(this, ref p);
             
         }
 
@@ -107,6 +109,24 @@ namespace Skork {
             updateZoomFactor();
         }
 
+        /// <summary>
+        /// While Ctrl + Scrolling, this will ensure the update of the
+        /// zoom factor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
+        private void txtCode_MouseHover(object sender, EventArgs e) {
+            updateZoomFactor();
+        }
+
+        private void btnCTXCompile_Click(object sender, EventArgs e) {
+            OutlineBox o = new OutlineBox();
+            o.outlineControl(ref picSyntax, 1, 5);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e) {
+
+        }
     }
 }
