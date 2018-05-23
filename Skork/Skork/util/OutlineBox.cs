@@ -17,7 +17,7 @@ namespace Skork.util {
     /// <para>+ Execution runs on a separate thread.</para>
     /// </summary>
 
-    class OutlineBox {
+   class OutlineBox {
         
         private byte outlineNumTimes;
         private Color outlineColor;
@@ -26,19 +26,19 @@ namespace Skork.util {
         private PictureBox p;
         private byte type;
         private short interval;
-
+        
         /// <summary>
         /// Default constructor for OutlineBox.
         /// </summary>
 
         public OutlineBox() {
-            outlineNumTimes = 0;
-            outlineColor = Color.White;
-            outlineColor2 = Color.Transparent;
-            outlineTimer = new Timer();
-            p = new PictureBox();
-            type = 0;
-            interval = 100;
+            this.outlineNumTimes = 0;
+            this.outlineColor = Color.White;
+            this.outlineColor2 = Color.Transparent;
+            this.outlineTimer = new Timer();
+            this.p = new PictureBox();
+            this.type = 0;
+            this.interval = 100;
         }
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace Skork.util {
         /// Use type parameter to specify the type
         /// </summary>
         /// <param name="p">The picturebox to outline.</param>
-        /// <param name="type">The type of outline {1 = green, 2 = red, 3 = gold}</param>
+        /// <param name="type">The type of outline {1 = green, 2 = red, 3 = gold, type >= 4 = random}</param>
         /// <param name="num">Number of times to flicker the color.</param>
 
-        public void outlineControl(ref PictureBox p, byte type = 1, byte num = 3) {
+        public void outlineControl(ref PictureBox p, byte type, byte num = 3) {
             this.type = type; // copy parameter to member variable.
             outlineTimer.Interval = this.interval; 
             outlineTimer.Tick += outlineControl_Tick;
@@ -85,24 +85,27 @@ namespace Skork.util {
                 } else if (this.type == 3) {
                     outlineColor = Color.Gold;
                 } else {
-                    outlineColor = Color.Gold;
+                    Random rnd = new Random();
+                    outlineColor = Color.FromArgb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256));
                 }
             } else {
                 throw new ArgumentException("Object passed is not a picturebox" + this.ToString());
             }
         }
 
-        private void outlineControl_Tick(object sender, EventArgs e) {          
+        private void outlineControl_Tick(object sender, EventArgs e) {            
             if (outlineNumTimes <= 0) {
                 this.outlineTimer.Stop();
                 this.p.BackColor = this.outlineColor2;
             } else {
-                
+
                 if (this.p.BackColor == this.outlineColor) {
                     this.p.BackColor = this.outlineColor2;
                     --this.outlineNumTimes;
-                } else {
+                } else if (this.p.BackColor == this.outlineColor2) {
                     this.p.BackColor = this.outlineColor;
+                } else {
+                    return;
                 }
                 
             }

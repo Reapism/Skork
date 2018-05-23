@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using Skork.ui;
 using Skork.util;
 using System.Reflection;
+using Skork.keywords;
 
 namespace Skork {
 
     public partial class frmSkork : Form {
-        internal decimal d;
 
         /// <summary>
         /// Default constructor
@@ -22,12 +22,16 @@ namespace Skork {
 
         public frmSkork() {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+
 
             Point frmSize = new Point(750, 500);
             this.Width = frmSize.X;
             this.Height = frmSize.Y;
-                      
+
             UserInterface.drawMain(this, ref frmSize);
+            OutlineBox o = new OutlineBox();
+            o.outlineControl(ref picSyntax, 4, 3);
         }
 
         /// <summary>
@@ -42,6 +46,10 @@ namespace Skork {
             addToLoad();
         }
 
+        /// <summary>
+        /// All dynamic event handlers.
+        /// </summary>
+
         private void addHandlers() {
             lblZoom.MouseDown += lblZoom_MouseDown;
             ctxZoomFactor.ItemClicked += ctxZoomFactor_ItemClicked;
@@ -50,7 +58,7 @@ namespace Skork {
         private void addToLoad() {
             string v = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             this.Text = "Skork Application - " + v;
-            this.txtCode.Text = 
+            this.txtCode.Text =
                 "/**\n" +
                 "Skork v: " + v + '\n' +
                 "@author iReapism\n" +
@@ -60,7 +68,7 @@ namespace Skork {
         private void frmSkork_Resize(object sender, EventArgs e) {
             Point p = new Point(this.Width, this.Height);
             UserInterface.drawMain(this, ref p);
-            
+
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e) {
@@ -82,35 +90,67 @@ namespace Skork {
         private void ctxZoomFactor_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
             if (e.ClickedItem is ToolStripItem) {
-                ToolStripItem btn = e.ClickedItem;
+                ToolStripMenuItem zoom = (ToolStripMenuItem)e.ClickedItem;
+
                 try {
-                    if (e.ClickedItem.Tag.ToString() == null) {
+                    if (zoom.Tag.ToString() == null) {
                         return;
                     } else {
-                        if (e.ClickedItem.Tag.ToString().Contains('.')) {
-                            float zmFct = float.Parse(e.ClickedItem.Tag.ToString());
+                        if (zoom.HasDropDownItems) {
+                            foreach (ToolStripMenuItem i in zoom.DropDownItems) {
+                                if (i.Tag.ToString().Contains('.')) {
+                                    float zmFct = float.Parse(i.Tag.ToString());
+                                    txtCode.ZoomFactor = zmFct;
+                                    updateZoomFactor();
+                                }
+                            }
+                        }
+
+                        if (zoom.Tag.ToString().Contains('.')) {
+                            float zmFct = float.Parse(zoom.Tag.ToString());
                             txtCode.ZoomFactor = zmFct;
                             updateZoomFactor();
                         } else {
-                            // implement gen and custome here maybe using wildcards
-                            // https://stackoverflow.com/questions/30299671/matching-strings-with-wildcard
-                            // or by executing another method that finds it
+                            if (zoom.Tag.ToString().ToLower() == "generate more") {
+                                ToolStripMenuItem t = (ToolStripMenuItem)e.ClickedItem;
+                                if (!t.HasDropDownItems) {
+                                    genMore(ref t);
+                                }
+                            } else if (zoom.Tag.ToString().ToLower() == "custom") {
+                                string s = "Enter a custom amount.:";
+                                if (Diag.showInputDialog(ref s).Equals(DialogResult.OK)) {
+
+                                }
+                            } else {
+
+                            }
+
                         }
 
                     }
                 } catch (Exception ex) {
-                    MessageBox.Show("Null Reference Exception", ex.Source);
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
-        
+
+        private void genMore(ref ToolStripMenuItem t) {
+            byte step = 10;
+            for (int i = 100; i < 500; i += step) {
+                ToolStripMenuItem item = new ToolStripMenuItem(i + "%");
+                item.Tag = i + ".0";
+                t.DropDownItems.Add(item);
+            }
+        }
+
+
         /// <summary>
         /// Show the ctxZoomFactor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void lblZoom_MouseDown(object sender, MouseEventArgs e) {            
+        private void lblZoom_MouseDown(object sender, MouseEventArgs e) {
             if (sender is ToolStripStatusLabel) {
                 ToolStripStatusLabel lbl = (ToolStripStatusLabel)sender;
                 // sender = (Label) sender; // explicit cast 
@@ -129,6 +169,7 @@ namespace Skork {
 
         private void txtCode_MouseHover(object sender, EventArgs e) {
             updateZoomFactor();
+
         }
 
         private void btnCTXCompile_Click(object sender, EventArgs e) {
@@ -144,6 +185,25 @@ namespace Skork {
         private void btnCTXSave_Click(object sender, EventArgs e) {
             OutlineBox o = new OutlineBox();
             o.outlineControl(ref picSyntax, 3, 3);
+        }
+
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e) {
+            MessageBox.Show(sender.ToString());
+            if (e.X > 1) {
+
+            }
+        }
+
+        private void btnFile_Click(object sender, EventArgs e) {
+            OutlineBox o = new OutlineBox();
+            o.outlineControl(ref picSyntax, 3, 3);
+
+
+        }
+
+        private void getTextToolStripMenuItem_Click(object sender, EventArgs e) {
+            string s = "c";
+            getTextToolStripMenuItem.Text = Diag.showInputDialog(ref s, false, "s");
         }
     }
 }

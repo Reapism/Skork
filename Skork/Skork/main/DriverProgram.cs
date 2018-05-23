@@ -14,7 +14,7 @@ namespace Skork {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSkork());
+            Application.Run(new frmSkork());           
         }
     }
 }

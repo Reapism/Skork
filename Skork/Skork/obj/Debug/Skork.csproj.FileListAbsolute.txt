@@ -17,3 +17,4 @@ E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csproj.GenerateResour
 E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.exe
 E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.pdb
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frm.frmUpdate.resources
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frm.Debug.resources

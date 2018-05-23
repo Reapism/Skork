@@ -59,6 +59,7 @@
             this.btnGenerateMoreZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.getTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCode.SuspendLayout();
             this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
@@ -74,7 +75,7 @@
             this.grpCode.Controls.Add(this.picSyntax);
             this.grpCode.Location = new System.Drawing.Point(3, 3);
             this.grpCode.Name = "grpCode";
-            this.grpCode.Size = new System.Drawing.Size(361, 414);
+            this.grpCode.Size = new System.Drawing.Size(373, 408);
             this.grpCode.TabIndex = 1;
             this.grpCode.TabStop = false;
             this.grpCode.Text = "Code:";
@@ -84,7 +85,7 @@
             this.txtCode.ContextMenuStrip = this.ctxCode;
             this.txtCode.Location = new System.Drawing.Point(6, 19);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(349, 389);
+            this.txtCode.Size = new System.Drawing.Size(349, 383);
             this.txtCode.TabIndex = 1;
             this.txtCode.Text = "/**\nSkork - v\n@author iReapism\n*/";
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
@@ -122,19 +123,18 @@
             // 
             // picSyntax
             // 
-            this.picSyntax.BackColor = System.Drawing.Color.Transparent;
-            this.picSyntax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picSyntax.Location = new System.Drawing.Point(3, 16);
             this.picSyntax.Name = "picSyntax";
-            this.picSyntax.Size = new System.Drawing.Size(355, 395);
+            this.picSyntax.Size = new System.Drawing.Size(355, 386);
             this.picSyntax.TabIndex = 0;
             this.picSyntax.TabStop = false;
             // 
             // grpOutput
             // 
-            this.grpOutput.Location = new System.Drawing.Point(370, 3);
+            this.grpOutput.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grpOutput.Location = new System.Drawing.Point(389, 3);
             this.grpOutput.Name = "grpOutput";
-            this.grpOutput.Size = new System.Drawing.Size(361, 414);
+            this.grpOutput.Size = new System.Drawing.Size(342, 408);
             this.grpOutput.TabIndex = 2;
             this.grpOutput.TabStop = false;
             this.grpOutput.Text = "Output:";
@@ -172,11 +172,14 @@
             // 
             // btnFile
             // 
+            this.btnFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.getTextToolStripMenuItem});
             this.btnFile.Image = ((System.Drawing.Image)(resources.GetObject("btnFile.Image")));
             this.btnFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFile.Name = "btnFile";
             this.btnFile.Size = new System.Drawing.Size(54, 22);
             this.btnFile.Text = "File";
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
             // 
             // btnEdit
             // 
@@ -233,7 +236,7 @@
             // 
             this.btn100.Name = "btn100";
             this.btn100.Size = new System.Drawing.Size(161, 22);
-            this.btn100.Tag = "1";
+            this.btn100.Tag = "1.0";
             this.btn100.Text = "100%";
             // 
             // btn110
@@ -296,39 +299,46 @@
             // 
             this.btnGenerateMoreZoom.Name = "btnGenerateMoreZoom";
             this.btnGenerateMoreZoom.Size = new System.Drawing.Size(161, 22);
-            this.btnGenerateMoreZoom.Tag = "Generate more...";
+            this.btnGenerateMoreZoom.Tag = "Generate more";
             this.btnGenerateMoreZoom.Text = "Generate more...";
             // 
             // btnCustomZoom
             // 
             this.btnCustomZoom.Name = "btnCustomZoom";
             this.btnCustomZoom.Size = new System.Drawing.Size(161, 22);
-            this.btnCustomZoom.Tag = "Custom...";
+            this.btnCustomZoom.Tag = "Custom";
             this.btnCustomZoom.Text = "Custom...";
             // 
             // tblMain
             // 
             this.tblMain.ColumnCount = 2;
-            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblMain.Controls.Add(this.grpOutput, 1, 0);
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.63488F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.36512F));
             this.tblMain.Controls.Add(this.grpCode, 0, 0);
+            this.tblMain.Controls.Add(this.grpOutput, 1, 0);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.Location = new System.Drawing.Point(0, 25);
             this.tblMain.Name = "tblMain";
             this.tblMain.RowCount = 1;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblMain.Size = new System.Drawing.Size(734, 436);
+            this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
+            // 
+            // getTextToolStripMenuItem
+            // 
+            this.getTextToolStripMenuItem.Name = "getTextToolStripMenuItem";
+            this.getTextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getTextToolStripMenuItem.Text = "GetText";
+            this.getTextToolStripMenuItem.Click += new System.EventHandler(this.getTextToolStripMenuItem_Click);
             // 
             // frmSkork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
-            this.Controls.Add(this.stsMain);
             this.Controls.Add(this.tblMain);
             this.Controls.Add(this.tsMain);
+            this.Controls.Add(this.stsMain);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "frmSkork";
             this.Text = "Skork Application - ";
@@ -378,6 +388,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnCustomZoom;
         private System.Windows.Forms.ToolStripStatusLabel lblZoom;
         private System.Windows.Forms.TableLayoutPanel tblMain;
+        private System.Windows.Forms.ToolStripMenuItem getTextToolStripMenuItem;
     }
 }
 
