@@ -84,6 +84,7 @@
       <DependentUpon>frmUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\OperationPlus.cs" />
+    <Compile Include="functions\SkorkLeft.cs" />
     <Compile Include="keywords\SkorkFalse.cs" />
     <Compile Include="keywords\SkorkInt.cs" />
     <Compile Include="keywords\SkorkKeyword.cs" />

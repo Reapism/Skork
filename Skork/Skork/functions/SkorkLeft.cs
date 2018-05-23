@@ -1,10 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Skork.functions {
-    class SkorkLeft {
+    abstract class SkorkLeft {
+
+        public SkorkLeft() {
+            left(19);
+        }
+
+        public int left(int x) {
+            if (x - 1 < 0) {
+                return x;
+            } else {
+                return x - 1;
+            }
+        }
+
+        public int left(int x, int n) {
+            if (x - 1 >= 0 && n > 0) return left(x - 1);
+
+        }
+
+
     }
 }
