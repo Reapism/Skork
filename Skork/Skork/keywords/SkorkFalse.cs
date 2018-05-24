@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Skork.keywords {
-    class SkorkFalse {
+    class SkorkFalse : SkorkKeyword {
 
     }
 }
