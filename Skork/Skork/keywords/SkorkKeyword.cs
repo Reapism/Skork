@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace Skork.keywords {
     abstract class SkorkKeyword {
 
-        protected string keyword;
+        protected Dictionary<string, string> keyword;
 
         public SkorkKeyword() {
-            keyword = string.Empty;
+            keyword.Add("keyword", "value"); // value points to the actual keyword
         }
 
 

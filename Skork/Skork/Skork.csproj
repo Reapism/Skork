@@ -91,6 +91,7 @@
     <Compile Include="keywords\SkorkTrue.cs" />
     <Compile Include="main\DriverProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ui\SkorkPlane.cs" />
     <Compile Include="ui\UserInterface.cs" />
     <Compile Include="util\Diag.cs" />
     <Compile Include="util\OutlineBox.cs" />

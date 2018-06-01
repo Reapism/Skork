@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Skork.ui;
 using Skork.util;
 using System.Reflection;
-using Skork.keywords;
 
 namespace Skork {
 
     public partial class frmSkork : Form {
+
+        private delegate void drawPlane(Panel p);
 
         /// <summary>
         /// Default constructor
@@ -204,6 +200,20 @@ namespace Skork {
         private void getTextToolStripMenuItem_Click(object sender, EventArgs e) {
             string s = "c";
             getTextToolStripMenuItem.Text = Diag.showInputDialog(ref s, false, "s");
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e) {
+            SkorkPlane p = new SkorkPlane();
+            p.drawPlane(ref pnlPlane, 10);
+
+            // https://www.techotopia.com/index.php/Using_Bitmaps_for_Persistent_Graphics_in_C_Sharp
+
+            //Action<Panel> drawPanel = p.drawPlane;
+                        
+            //if (this.InvokeRequired) {
+            //    this.BeginInvoke(drawPlane(pnlPlane));
+                
+            //}
         }
     }
 }

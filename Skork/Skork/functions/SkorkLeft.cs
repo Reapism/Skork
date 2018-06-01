@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Skork.functions {
     abstract class SkorkLeft {
@@ -22,7 +20,7 @@ namespace Skork.functions {
 
         public int left(int x, int n) {
             if (x - 1 >= 0 && n > 0) return left(x - 1);
-
+            return 1;
         }
 
 

@@ -38,10 +38,12 @@
             this.btnCTXSave = new System.Windows.Forms.ToolStripMenuItem();
             this.picSyntax = new System.Windows.Forms.PictureBox();
             this.grpOutput = new System.Windows.Forms.GroupBox();
+            this.pnlPlane = new System.Windows.Forms.Panel();
             this.stsMain = new System.Windows.Forms.StatusStrip();
             this.lblZoom = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.btnFile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.getTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEdit = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnHelp = new System.Windows.Forms.ToolStripDropDownButton();
@@ -59,10 +61,10 @@
             this.btnGenerateMoreZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
-            this.getTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCode.SuspendLayout();
             this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
+            this.grpOutput.SuspendLayout();
             this.stsMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.ctxZoomFactor.SuspendLayout();
@@ -131,6 +133,7 @@
             // 
             // grpOutput
             // 
+            this.grpOutput.Controls.Add(this.pnlPlane);
             this.grpOutput.Dock = System.Windows.Forms.DockStyle.Right;
             this.grpOutput.Location = new System.Drawing.Point(389, 3);
             this.grpOutput.Name = "grpOutput";
@@ -138,6 +141,14 @@
             this.grpOutput.TabIndex = 2;
             this.grpOutput.TabStop = false;
             this.grpOutput.Text = "Output:";
+            // 
+            // pnlPlane
+            // 
+            this.pnlPlane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPlane.Location = new System.Drawing.Point(3, 16);
+            this.pnlPlane.Name = "pnlPlane";
+            this.pnlPlane.Size = new System.Drawing.Size(336, 389);
+            this.pnlPlane.TabIndex = 0;
             // 
             // stsMain
             // 
@@ -181,6 +192,13 @@
             this.btnFile.Text = "File";
             this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
             // 
+            // getTextToolStripMenuItem
+            // 
+            this.getTextToolStripMenuItem.Name = "getTextToolStripMenuItem";
+            this.getTextToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.getTextToolStripMenuItem.Text = "GetText";
+            this.getTextToolStripMenuItem.Click += new System.EventHandler(this.getTextToolStripMenuItem_Click);
+            // 
             // btnEdit
             // 
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
@@ -214,6 +232,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(23, 22);
             this.btnSettings.Text = "Settings";
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // ctxZoomFactor
             // 
@@ -324,13 +343,6 @@
             this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
             // 
-            // getTextToolStripMenuItem
-            // 
-            this.getTextToolStripMenuItem.Name = "getTextToolStripMenuItem";
-            this.getTextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.getTextToolStripMenuItem.Text = "GetText";
-            this.getTextToolStripMenuItem.Click += new System.EventHandler(this.getTextToolStripMenuItem_Click);
-            // 
             // frmSkork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +359,7 @@
             this.grpCode.ResumeLayout(false);
             this.ctxCode.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).EndInit();
+            this.grpOutput.ResumeLayout(false);
             this.stsMain.ResumeLayout(false);
             this.stsMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
@@ -389,6 +402,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lblZoom;
         private System.Windows.Forms.TableLayoutPanel tblMain;
         private System.Windows.Forms.ToolStripMenuItem getTextToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlPlane;
     }
 }
 
