@@ -30,36 +30,38 @@ namespace Skork.ui {
 
             for (y = 0; y < height; y += sizeOfPixel) {
                 x = 0;
-                b.SetPixel(x, y, Color.Orange);
                 
-                for (x = 0; x < width; x+=1) {
-                    if (!(x + sizeOfPixel > width) || (x > width)) {
+                for (x = 0; x < width; x += 1) {
+                    if (!(x + sizeOfPixel > width) || (x < width + sizeOfPixel)) {
                         b.SetPixel(x, y, Color.White);
                     }
-
                 }
             }
 
-            
 
+                      
             for (x = 0; x < width; x += sizeOfPixel) {
                 y = 0;
-                b.SetPixel(x, y, Color.Orange);
 
-                for (y = 0; y < height; y+=1) {
-                    if (!(y + sizeOfPixel > height) || (y > height)) {
+                for (y = 0; y < height; y += 1) {
+                    if (!(y + sizeOfPixel > height) || (y < height + sizeOfPixel)) {
                         b.SetPixel(x, y, Color.White);
-                    }
-                        
-
+                    }                       
                 }
             }
-
 
             return b;
         }
 
         public void drawPlane(ref Panel plane, int i) {
+
+            foreach(object item in plane.Controls) {
+                if (item is PictureBox) {
+                    PictureBox p = (PictureBox)item;
+                    p.Dispose();
+                }
+            }
+
             Image img = drawGrid(plane.Width, plane.Height, i);
             PictureBox pic = new PictureBox();
             pic.BackgroundImage = img;

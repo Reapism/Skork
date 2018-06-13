@@ -1,7 +1,7 @@
-﻿
+﻿namespace Skork.keywords {
 
-namespace Skork.keywords {
-    class SkorkTrue : SkorkKeyword{
+
+    class SkorkTrue : SkorkSprite{
         
         public SkorkTrue() {
             keyword.Add("Keyword", "1");

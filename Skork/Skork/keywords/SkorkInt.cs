@@ -1,6 +1,8 @@
 ﻿
 
 namespace Skork.keywords {
-    class SkorkInt {
+    class SkorkInt : SkorkSprite {
+
+
     }
 }

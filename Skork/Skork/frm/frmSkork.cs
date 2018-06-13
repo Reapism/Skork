@@ -11,7 +11,7 @@ namespace Skork {
     public partial class frmSkork : Form {
 
         private delegate void drawPlane(Panel p);
-
+        Diag d;
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -28,6 +28,7 @@ namespace Skork {
             UserInterface.drawMain(this, ref frmSize);
             OutlineBox o = new OutlineBox();
             o.outlineControl(ref picSyntax, 4, 3);
+            d = new Diag();
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace Skork {
                 "/**\n" +
                 "Skork v: " + v + '\n' +
                 "@author iReapism\n" +
-                "*/\n";
+                "*/\n\n";
         }
 
         private void frmSkork_Resize(object sender, EventArgs e) {
@@ -72,6 +73,7 @@ namespace Skork {
         }
 
         private void updateZoomFactor() {
+
             lblZoom.Text = txtCode.ZoomFactor * 100 + "%";
         }
 
@@ -106,39 +108,18 @@ namespace Skork {
                             float zmFct = float.Parse(zoom.Tag.ToString());
                             txtCode.ZoomFactor = zmFct;
                             updateZoomFactor();
-                        } else {
-                            if (zoom.Tag.ToString().ToLower() == "generate more") {
-                                ToolStripMenuItem t = (ToolStripMenuItem)e.ClickedItem;
-                                if (!t.HasDropDownItems) {
-                                    genMore(ref t);
-                                }
-                            } else if (zoom.Tag.ToString().ToLower() == "custom") {
-                                string s = "Enter a custom amount.:";
-                                if (Diag.showInputDialog(ref s).Equals(DialogResult.OK)) {
-
-                                }
-                            } else {
+                        } else if (zoom.Tag.ToString().ToLower() == "custom") {
+                            string s = "Enter a custom amount.:";
+                            if (d.showInputDialog(ref s).Equals(DialogResult.OK)) {
 
                             }
-
                         }
-
                     }
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
             }
         }
-
-        private void genMore(ref ToolStripMenuItem t) {
-            byte step = 10;
-            for (int i = 100; i < 500; i += step) {
-                ToolStripMenuItem item = new ToolStripMenuItem(i + "%");
-                item.Tag = i + ".0";
-                t.DropDownItems.Add(item);
-            }
-        }
-
 
         /// <summary>
         /// Show the ctxZoomFactor
@@ -165,12 +146,15 @@ namespace Skork {
 
         private void txtCode_MouseHover(object sender, EventArgs e) {
             updateZoomFactor();
-
         }
 
         private void btnCTXCompile_Click(object sender, EventArgs e) {
             OutlineBox o = new OutlineBox();
             o.outlineControl(ref picSyntax, 1, 3);
+            Util u = new util.Util();
+            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, 'S', ';'));
+            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, "Skork", ';'));
+            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, "Skork", ";\n"));
         }
 
         private void btnCTXCompileDebug_Click(object sender, EventArgs e) {
@@ -191,29 +175,31 @@ namespace Skork {
         }
 
         private void btnFile_Click(object sender, EventArgs e) {
-            OutlineBox o = new OutlineBox();
-            o.outlineControl(ref picSyntax, 3, 3);
-
 
         }
 
         private void getTextToolStripMenuItem_Click(object sender, EventArgs e) {
             string s = "c";
-            getTextToolStripMenuItem.Text = Diag.showInputDialog(ref s, false, "s");
+            //getTextToolStripMenuItem.Text = Diag.showInputDialog(ref s, false, "s");
         }
 
         private void btnSettings_Click(object sender, EventArgs e) {
-            SkorkPlane p = new SkorkPlane();
-            p.drawPlane(ref pnlPlane, 10);
+            //SkorkPlane p = new SkorkPlane();
+            //p.drawPlane(ref pnlPlane, 4);
 
             // https://www.techotopia.com/index.php/Using_Bitmaps_for_Persistent_Graphics_in_C_Sharp
 
             //Action<Panel> drawPanel = p.drawPlane;
-                        
+
             //if (this.InvokeRequired) {
             //    this.BeginInvoke(drawPlane(pnlPlane));
-                
+
             //}
+        }
+
+        private void btnRedrawGrid_Click(object sender, EventArgs e) {
+            SkorkPlane p = new SkorkPlane();
+            p.drawPlane(ref pnlPlane, 4);
         }
     }
 }

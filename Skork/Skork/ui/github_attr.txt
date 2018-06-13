@@ -1,0 +1,4 @@
+﻿picture=https://avatars2.githubusercontent.com/u/1627999?s=400&u=7f3b7e28f4353a4d4de743a45fa6df82018fb7f8&v=4
+bio=https://raw.githubusercontent.com/Reapism/Skork/master/README.md
+project=https://github.com/Reapism/Skork
+contributions=https://github.com/Reapism/Skork/graphs/contributors

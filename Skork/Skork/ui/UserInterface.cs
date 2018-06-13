@@ -34,9 +34,7 @@ namespace Skork.ui {
             f.txtCode.Size = new Size(f.picSyntax.Size.Width - outline, f.picSyntax.Size.Height - outline);
             f.txtCode.Location = new Point(f.picSyntax.Location.X + outline / 2, f.picSyntax.Location.Y + outline / 2);
             f.picSyntax.BackColor = Color.Green;
-
-            
-            
+         
         }       
 
     }
