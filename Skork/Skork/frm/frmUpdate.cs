@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Skork.frm {
-    public partial class frmUpdate : Form {
-        public frmUpdate() {
+    public partial class FrmUpdate : Form {
+        public FrmUpdate() {
             InitializeComponent();
         }
     }

@@ -47,6 +47,7 @@
             this.btnFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnEdit = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
             this.ctxZoomFactor = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -61,7 +62,7 @@
             this.btn500 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
-            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getLiensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCode.SuspendLayout();
             this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
@@ -101,9 +102,10 @@
             this.ctxCode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCTXCompile,
             this.btnCTXCompileDebug,
-            this.btnCTXSave});
+            this.btnCTXSave,
+            this.getLiensToolStripMenuItem});
             this.ctxCode.Name = "ctxCode";
-            this.ctxCode.Size = new System.Drawing.Size(171, 70);
+            this.ctxCode.Size = new System.Drawing.Size(171, 114);
             // 
             // btnCTXCompile
             // 
@@ -226,6 +228,12 @@
             this.btnView.Size = new System.Drawing.Size(61, 22);
             this.btnView.Text = "View";
             // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            // 
             // btnHelp
             // 
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
@@ -233,6 +241,7 @@
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(61, 22);
             this.btnHelp.Text = "Help";
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnSettings
             // 
@@ -346,11 +355,12 @@
             this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
             // 
-            // debugToolStripMenuItem
+            // getLiensToolStripMenuItem
             // 
-            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.debugToolStripMenuItem.Text = "Debug";
+            this.getLiensToolStripMenuItem.Name = "getLiensToolStripMenuItem";
+            this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.getLiensToolStripMenuItem.Text = "GetLines";
+            this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.getLiensToolStripMenuItem_Click);
             // 
             // frmSkork
             // 
@@ -414,6 +424,7 @@
         private System.Windows.Forms.ContextMenuStrip ctxOutput;
         private System.Windows.Forms.ToolStripMenuItem btnRedrawGrid;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getLiensToolStripMenuItem;
     }
 }
 

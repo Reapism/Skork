@@ -2,9 +2,12 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
 using Skork.ui;
 using Skork.util;
-using System.Reflection;
+using Skork.frm;
+using Skork.keywords;
+using System.Collections.Specialized;
 
 namespace Skork {
 
@@ -152,9 +155,18 @@ namespace Skork {
             OutlineBox o = new OutlineBox();
             o.outlineControl(ref picSyntax, 1, 3);
             Util u = new util.Util();
-            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, 'S', ';'));
-            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, "Skork", ';'));
-            MessageBox.Show("\n\n" + u.readUntil(txtCode.Text, "Skork", ";\n"));
+            
+            if (txtCode.Text.Contains(u.readUntil(txtCode.Text, "S",";"))) {
+                SkorkKeywords keyword = new SkorkKeywords();
+                SkorkSprite s = new SkorkSprite();
+                SkorkLeft left = new SkorkLeft();
+                    keyword.addKeyword("Sprite", s);
+                    keyword.invokeKeyword("True");
+                    left.left(s, 4);
+                if (keyword.isKeyword("True")) {
+
+                }
+            }
         }
 
         private void btnCTXCompileDebug_Click(object sender, EventArgs e) {
@@ -167,39 +179,36 @@ namespace Skork {
             o.outlineControl(ref picSyntax, 3, 3);
         }
 
-        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e) {
-            MessageBox.Show(sender.ToString());
-            if (e.X > 1) {
-
-            }
-        }
-
         private void btnFile_Click(object sender, EventArgs e) {
 
         }
 
         private void getTextToolStripMenuItem_Click(object sender, EventArgs e) {
-            string s = "c";
-            //getTextToolStripMenuItem.Text = Diag.showInputDialog(ref s, false, "s");
+
         }
 
         private void btnSettings_Click(object sender, EventArgs e) {
-            //SkorkPlane p = new SkorkPlane();
-            //p.drawPlane(ref pnlPlane, 4);
-
-            // https://www.techotopia.com/index.php/Using_Bitmaps_for_Persistent_Graphics_in_C_Sharp
-
-            //Action<Panel> drawPanel = p.drawPlane;
-
-            //if (this.InvokeRequired) {
-            //    this.BeginInvoke(drawPlane(pnlPlane));
-
-            //}
+            FrmSettings s = new frm.FrmSettings();
+            s.Show(this);
         }
 
         private void btnRedrawGrid_Click(object sender, EventArgs e) {
             SkorkPlane p = new SkorkPlane();
             p.drawPlane(ref pnlPlane, 4);
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e) {
+
+        }
+
+        private void getLiensToolStripMenuItem_Click(object sender, EventArgs e) {
+            txtCode.AppendText("\n");
+            Util u = new Util();
+            StringCollection sc = u.getLines(txtCode.Text);
+            MessageBox.Show("Hello Mr. streamer!");
+            foreach(string item in sc) {
+                MessageBox.Show(item);
+            }
         }
     }
 }

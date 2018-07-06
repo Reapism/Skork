@@ -10,18 +10,27 @@ namespace Skork.keywords {
     /// scenario.
     /// </summary>
 
-     class SkorkSprite : SkorkKeywords{
-
+    class SkorkSprite : SkorkKeywords {
+        
         protected PictureBox sprite;
 
-        public SkorkSprite() {
-            sprite = new PictureBox();
-            sprite.Location = new Point(0, 0);
-            sprite.BackColor = Color.Blue;
+        public SkorkSprite() {         
+            this.sprite = new PictureBox();
+            this.sprite.Location = new Point(0, 0);
+            this.sprite.BackColor = Color.Blue;
         }
 
-        protected Point getLocation() {
-            return sprite.Location;
+        public Point Location {
+            get {
+                return this.sprite.Location;
+            }
+            set {
+                this.sprite.Location = value; // value is keyword for the right part of assignment
+            }
+        }
+
+        public Point getLocation() {
+            return this.sprite.Location;
         }
 
 

@@ -37,8 +37,6 @@ namespace Skork.ui {
                     }
                 }
             }
-
-
                       
             for (x = 0; x < width; x += sizeOfPixel) {
                 y = 0;
@@ -109,10 +107,6 @@ namespace Skork.ui {
                 }
             }
             numX = numX / numY; // determine number of boxes on X-axis
-        }
-
-        private void Bg_DoWork(object sender, DoWorkEventArgs e) {
-            
         }
 
         private void Unit_Click(object sender, EventArgs e) {

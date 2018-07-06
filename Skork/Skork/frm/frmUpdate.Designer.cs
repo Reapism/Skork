@@ -1,5 +1,5 @@
 ﻿namespace Skork.frm {
-    partial class frmUpdate {
+    partial class FrmUpdate {
         /// <summary>
         /// Required designer variable.
         /// </summary>

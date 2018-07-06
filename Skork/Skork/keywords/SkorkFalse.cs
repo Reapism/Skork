@@ -1,6 +1,4 @@
-﻿
-
-namespace Skork.keywords {
+﻿namespace Skork.keywords {
     class SkorkFalse : SkorkSprite {
 
         private bool val;

@@ -1,29 +1,24 @@
-﻿namespace Skork.keywords {
+﻿using System.Drawing;
 
+namespace Skork.keywords {
 
+    class SkorkLeft {
 
-    abstract class SkorkLeft : SkorkSprite {
+        /// <summary>
+        /// Moves a sprite left by default one unit.
+        /// <para>Recursively calls itself if X > 1</para>
+        /// </summary>
+        /// <param name="s">The sprite to move.</param>
+        /// <param name="x">Moves the sprite x times left.</param>
 
-        private SkorkSprite s;
-
-        public SkorkLeft(SkorkSprite s) {
-            this.s = s;
-            left(s, 19);
+        public void left(SkorkSprite s, int x = 1) {
+            if (s.Location.X - 1 < 0 && x > 0) {
+                s.Location = new Point(s.Location.X - 1, s.Location.Y);
+                System.Windows.Forms.MessageBox.Show("LEFT " + x);
+                left(s, --x);
+            } else { return; }
         }
-
-        public int left(SkorkSprite s, int x) {
-            if (x - 1 < 0) {
-                return x;
-            } else {
-                return x - 1;
-            }
-        }
-
-        public int left(int x, int n) {
-            if (x - 1 >= 0 && n > 0) return left(s, x - 1);
-            return 1;
-        }
-
-
     }
 }
+
+
