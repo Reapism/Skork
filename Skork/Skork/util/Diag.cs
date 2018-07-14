@@ -10,7 +10,7 @@ namespace Skork.util {
         /// <param name="tite">Name of for</param>
         /// <param name="type">1 = Normal, 2 = Critical, 3 = </param>
 
-        public void showMessage(ref string caption, string title = "Skork", byte type = 1) {
+        public void showMessage(string caption, string title = "Skork", byte type = 1) {
             System.Drawing.Size size = new System.Drawing.Size(200, 70);
             Form inputBox = new Form();
 
@@ -52,7 +52,7 @@ namespace Skork.util {
         /// <param name="name"></param>
         /// <returns></returns>
 
-        public DialogResult showMessage(ref string caption, string name = "Skork") {
+        public DialogResult showMessage(string caption, string name = "Skork") {
             System.Drawing.Size size = new System.Drawing.Size(200, 70);
             Form inputBox = new Form();
 
@@ -89,7 +89,7 @@ namespace Skork.util {
             return result;
         }
 
-        public string showInputDialog(ref string caption, string name = "Skork") {
+        public string showInputDialog(string caption, string name = "Skork") {
             System.Drawing.Size size = new System.Drawing.Size(200, 70);
             Form inputBox = new Form();
 
