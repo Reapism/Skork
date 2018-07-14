@@ -91,9 +91,48 @@ namespace Skork.util {
             return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1) + 1, s.IndexOf(c2) - s.IndexOf(c1) - 1) : "skork-null";
         }
 
+        /// <summary>
+        /// Gets a line from a string from beginning to a carriage-return (\n)
+        /// </summary>
+        /// <param name="s">The string.</param>
+        /// <returns>Returns a substring from s where a new line is contained.</returns>
+
         public string getLine(string s) {
             return s.Substring(0, s.LastIndexOf('\n'));
         }
+
+        /// <summary>
+        /// Gets a line from a string from beginning to a specific character.
+        /// </summary>
+        /// <param name="s">The string.</param>
+        /// <param name="c">The character to terminate the substring.</param>
+        /// <returns>Returns a substring from s where c is contained.</returns>
+
+        public string getLine(string s, char c) {
+            return s.Substring(0, s.LastIndexOf(c));
+        }
+
+        /// <summary>
+        /// Determines if the string contains only a specific character.
+        /// </summary>
+        /// <param name="s">The string to search.</param>
+        /// <param name="c">The character to compare.</param>
+        /// <returns>Returns true if the string contains only the character, false otherwise.</returns>
+
+        public bool containsOnly(string s, char c) {           
+            for (int i = 0; i < s.Length; i++) {
+                if (s.ElementAt<char>(i) != c) {
+                    return false;
+                }      
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Separates a string into a collection.
+        /// </summary>
+        /// <param name="s">T</param>
+        /// <returns>A string collection of substrings.</returns>
 
         public StringCollection getLines(string s) {
             StringCollection sc = new StringCollection();
@@ -101,9 +140,10 @@ namespace Skork.util {
             string line;
 
             while (((line = sr.ReadLine()) != null)) {
-                if (line != string.Empty)
+                if (line != string.Empty && !containsOnly(line, ' '))
                     sc.Add(line);
             }
+            sr.Close();
             return sc;
         }
 
@@ -131,7 +171,7 @@ namespace Skork.util {
         /// <param name="url">The url to download from.</param>
         /// <returns></returns>
 
-        public byte[] getFile(string url) {
+        public byte[] getOnlineFile(string url) {
             byte[] b;
 
             using (WebClient client = new WebClient()) {
