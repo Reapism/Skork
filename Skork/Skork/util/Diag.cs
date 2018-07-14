@@ -89,6 +89,13 @@ namespace Skork.util {
             return result;
         }
 
+        /// <summary>
+        /// Creates and returns the input from the input dialog as a string.
+        /// </summary>
+        /// <param name="caption">A caption for the dialog.</param>
+        /// <param name="name">The title of the dialog.</param>
+        /// <returns>Returns the input from the input dialog as a string.</returns>
+
         public string showInputDialog(string caption, string name = "Skork") {
             System.Drawing.Size size = new System.Drawing.Size(200, 70);
             Form inputBox = new Form();
