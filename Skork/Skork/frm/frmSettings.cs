@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Skork.util;
 using System.IO;
 using System.Reflection;
+using System.Resources;
 
 namespace Skork.frm {
     public partial class FrmSettings : Form {
@@ -18,9 +19,9 @@ namespace Skork.frm {
             DownloadPicture d = new DownloadPicture();
 
             string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"ui\github_attr.txt");
-            MessageBox.Show(getInfo(path, "bio"));
-            txtReadME.AppendText(u.getString(u.getFile("https://raw.githubusercontent.com/Reapism/Skork/master/README.md")));
-            picAbout.BackgroundImage = d.downloadImage("https://www.freeiconspng.com/uploads/beach-png-6.png");            
+            txtReadME.AppendText(u.getString(u.getOnlineFile("https://raw.githubusercontent.com/Reapism/Skork/master/README.md")));
+            picAbout.BackgroundImage = Properties.Resources.skork;
+            this.Icon = Properties.Resources.skork_icon;
         }
 
         private void drawSettings(int index) {
@@ -54,8 +55,6 @@ namespace Skork.frm {
 
         private void picAbout_Click(object sender, EventArgs e) {
             
-          
-
         }
     }
 }

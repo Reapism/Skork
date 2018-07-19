@@ -28,6 +28,7 @@
             this.tabAbout = new System.Windows.Forms.TabPage();
             this.grpAbout = new System.Windows.Forms.GroupBox();
             this.grpSkorkAbout = new System.Windows.Forms.GroupBox();
+            this.txtReadME = new System.Windows.Forms.RichTextBox();
             this.picAbout = new System.Windows.Forms.PictureBox();
             this.tabProject = new System.Windows.Forms.TabPage();
             this.grpProject = new System.Windows.Forms.GroupBox();
@@ -35,7 +36,8 @@
             this.grpSettings = new System.Windows.Forms.GroupBox();
             this.tabGitHub = new System.Windows.Forms.TabPage();
             this.grpGitHub = new System.Windows.Forms.GroupBox();
-            this.txtReadME = new System.Windows.Forms.RichTextBox();
+            this.grpProj = new System.Windows.Forms.GroupBox();
+            this.grpGo = new System.Windows.Forms.GroupBox();
             this.pnlMain.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabAbout.SuspendLayout();
@@ -43,6 +45,7 @@
             this.grpSkorkAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAbout)).BeginInit();
             this.tabProject.SuspendLayout();
+            this.grpProject.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabGitHub.SuspendLayout();
             this.SuspendLayout();
@@ -104,9 +107,20 @@
             this.grpSkorkAbout.TabStop = false;
             this.grpSkorkAbout.Text = "Read ME:";
             // 
+            // txtReadME
+            // 
+            this.txtReadME.Location = new System.Drawing.Point(6, 19);
+            this.txtReadME.Name = "txtReadME";
+            this.txtReadME.Size = new System.Drawing.Size(829, 103);
+            this.txtReadME.TabIndex = 0;
+            this.txtReadME.Text = "";
+            this.txtReadME.ZoomFactor = 1.5F;
+            // 
             // picAbout
             // 
-            this.picAbout.BackColor = System.Drawing.Color.DarkRed;
+            this.picAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.picAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picAbout.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picAbout.Location = new System.Drawing.Point(250, 19);
             this.picAbout.Name = "picAbout";
             this.picAbout.Size = new System.Drawing.Size(280, 280);
@@ -127,6 +141,8 @@
             // 
             // grpProject
             // 
+            this.grpProject.Controls.Add(this.grpGo);
+            this.grpProject.Controls.Add(this.grpProj);
             this.grpProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpProject.Location = new System.Drawing.Point(3, 3);
             this.grpProject.Name = "grpProject";
@@ -177,13 +193,23 @@
             this.grpGitHub.TabStop = false;
             this.grpGitHub.Text = "GitHub:";
             // 
-            // txtReadME
+            // grpProj
             // 
-            this.txtReadME.Location = new System.Drawing.Point(6, 19);
-            this.txtReadME.Name = "txtReadME";
-            this.txtReadME.Size = new System.Drawing.Size(829, 103);
-            this.txtReadME.TabIndex = 0;
-            this.txtReadME.Text = "";
+            this.grpProj.Location = new System.Drawing.Point(6, 19);
+            this.grpProj.Name = "grpProj";
+            this.grpProj.Size = new System.Drawing.Size(391, 437);
+            this.grpProj.TabIndex = 0;
+            this.grpProj.TabStop = false;
+            this.grpProj.Text = "Details:";
+            // 
+            // grpGo
+            // 
+            this.grpGo.Location = new System.Drawing.Point(456, 19);
+            this.grpGo.Name = "grpGo";
+            this.grpGo.Size = new System.Drawing.Size(391, 437);
+            this.grpGo.TabIndex = 1;
+            this.grpGo.TabStop = false;
+            this.grpGo.Text = "Settings:";
             // 
             // FrmSettings
             // 
@@ -201,6 +227,7 @@
             this.grpSkorkAbout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAbout)).EndInit();
             this.tabProject.ResumeLayout(false);
+            this.grpProject.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.tabGitHub.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -222,5 +249,7 @@
         internal System.Windows.Forms.GroupBox grpAbout;
         internal System.Windows.Forms.GroupBox grpSkorkAbout;
         private System.Windows.Forms.RichTextBox txtReadME;
+        private System.Windows.Forms.GroupBox grpGo;
+        private System.Windows.Forms.GroupBox grpProj;
     }
 }

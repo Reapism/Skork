@@ -51,6 +51,9 @@
   <PropertyGroup>
     <StartupObject>Skork.DriverProgram</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>resources\skork_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,11 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm\Debug.cs">
+    <Compile Include="exceptions\SkorkInvalidIdentifierException.cs" />
+    <Compile Include="frm\frmDebug.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm\Debug.Designer.cs">
-      <DependentUpon>Debug.cs</DependentUpon>
+    <Compile Include="frm\frmDebug.Designer.cs">
+      <DependentUpon>frmDebug.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\FrmSettings.cs">
       <SubType>Form</SubType>
@@ -107,10 +111,17 @@
     <Compile Include="ui\UserInterface.cs" />
     <Compile Include="util\Diag.cs" />
     <Compile Include="util\DownloadPicture.cs" />
+    <Compile Include="keywords\SkorkKeys.cs" />
     <Compile Include="util\OutlineBox.cs" />
+    <Compile Include="util\SkorkCode.cs" />
+    <Compile Include="util\SkorkCompile.cs" />
+    <Compile Include="util\SkorkConventions.cs" />
+    <Compile Include="exceptions\SkorkException.cs" />
+    <Compile Include="util\SkorkInstructions.cs" />
+    <Compile Include="util\SkorkSettings.cs" />
     <Compile Include="util\Util.cs" />
-    <EmbeddedResource Include="frm\Debug.resx">
-      <DependentUpon>Debug.cs</DependentUpon>
+    <EmbeddedResource Include="frm\frmDebug.resx">
+      <DependentUpon>frmDebug.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
@@ -129,6 +140,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -144,6 +156,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="resources\skork.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="resources\skork_icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="ui\github_attr.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -160,9 +178,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

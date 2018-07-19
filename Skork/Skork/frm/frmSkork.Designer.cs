@@ -36,11 +36,14 @@
             this.btnCTXCompile = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCTXCompileDebug = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCTXSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.getLiensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.picSyntax = new System.Windows.Forms.PictureBox();
             this.grpOutput = new System.Windows.Forms.GroupBox();
             this.pnlPlane = new System.Windows.Forms.Panel();
             this.ctxOutput = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnRedrawGrid = new System.Windows.Forms.ToolStripMenuItem();
+            this.addKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stsMain = new System.Windows.Forms.StatusStrip();
             this.lblZoom = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMain = new System.Windows.Forms.ToolStrip();
@@ -62,7 +65,7 @@
             this.btn500 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
-            this.getLiensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validIdentiferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCode.SuspendLayout();
             this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
@@ -103,9 +106,10 @@
             this.btnCTXCompile,
             this.btnCTXCompileDebug,
             this.btnCTXSave,
-            this.getLiensToolStripMenuItem});
+            this.getLiensToolStripMenuItem,
+            this.validIdentiferToolStripMenuItem});
             this.ctxCode.Name = "ctxCode";
-            this.ctxCode.Size = new System.Drawing.Size(171, 114);
+            this.ctxCode.Size = new System.Drawing.Size(171, 136);
             // 
             // btnCTXCompile
             // 
@@ -127,6 +131,13 @@
             this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
             this.btnCTXSave.Text = "Save";
             this.btnCTXSave.Click += new System.EventHandler(this.btnCTXSave_Click);
+            // 
+            // getLiensToolStripMenuItem
+            // 
+            this.getLiensToolStripMenuItem.Name = "getLiensToolStripMenuItem";
+            this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.getLiensToolStripMenuItem.Text = "GetLines";
+            this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.getLiensToolStripMenuItem_Click);
             // 
             // picSyntax
             // 
@@ -159,9 +170,11 @@
             // ctxOutput
             // 
             this.ctxOutput.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRedrawGrid});
+            this.btnRedrawGrid,
+            this.addKeyToolStripMenuItem,
+            this.listKeyToolStripMenuItem});
             this.ctxOutput.Name = "ctxOutput";
-            this.ctxOutput.Size = new System.Drawing.Size(147, 26);
+            this.ctxOutput.Size = new System.Drawing.Size(147, 70);
             // 
             // btnRedrawGrid
             // 
@@ -169,6 +182,20 @@
             this.btnRedrawGrid.Size = new System.Drawing.Size(146, 22);
             this.btnRedrawGrid.Text = "Redraw grid...";
             this.btnRedrawGrid.Click += new System.EventHandler(this.btnRedrawGrid_Click);
+            // 
+            // addKeyToolStripMenuItem
+            // 
+            this.addKeyToolStripMenuItem.Name = "addKeyToolStripMenuItem";
+            this.addKeyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addKeyToolStripMenuItem.Text = "Add Key";
+            this.addKeyToolStripMenuItem.Click += new System.EventHandler(this.addKeyToolStripMenuItem_Click);
+            // 
+            // listKeyToolStripMenuItem
+            // 
+            this.listKeyToolStripMenuItem.Name = "listKeyToolStripMenuItem";
+            this.listKeyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.listKeyToolStripMenuItem.Text = "List Key";
+            this.listKeyToolStripMenuItem.Click += new System.EventHandler(this.listKeyToolStripMenuItem_Click);
             // 
             // stsMain
             // 
@@ -355,12 +382,12 @@
             this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
             // 
-            // getLiensToolStripMenuItem
+            // validIdentiferToolStripMenuItem
             // 
-            this.getLiensToolStripMenuItem.Name = "getLiensToolStripMenuItem";
-            this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.getLiensToolStripMenuItem.Text = "GetLines";
-            this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.getLiensToolStripMenuItem_Click);
+            this.validIdentiferToolStripMenuItem.Name = "validIdentiferToolStripMenuItem";
+            this.validIdentiferToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.validIdentiferToolStripMenuItem.Text = "ValidIdentifer";
+            this.validIdentiferToolStripMenuItem.Click += new System.EventHandler(this.validIdentiferToolStripMenuItem_Click);
             // 
             // frmSkork
             // 
@@ -425,6 +452,9 @@
         private System.Windows.Forms.ToolStripMenuItem btnRedrawGrid;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getLiensToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addKeyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listKeyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem validIdentiferToolStripMenuItem;
     }
 }
 

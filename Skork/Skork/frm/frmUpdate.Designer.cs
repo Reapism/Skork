@@ -25,13 +25,14 @@
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // frmUpdate
+            // FrmUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 457);
-            this.Name = "frmUpdate";
+            this.Name = "FrmUpdate";
             this.Text = "frmUpdate";
+            this.Load += new System.EventHandler(this.FrmUpdate_Load);
             this.ResumeLayout(false);
 
         }

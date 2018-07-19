@@ -124,8 +124,8 @@ namespace Skork.util {
                 if (s.ElementAt<char>(i) != c) {
                     return false;
                 }      
-            }
-            return true;
+            }               
+            return true;     
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Skork.util {
             string line;
 
             while (((line = sr.ReadLine()) != null)) {
-                if (line != string.Empty && !containsOnly(line, ' '))
+                if (line != string.Empty && !(containsOnly(line, ' ')))
                     sc.Add(line);
             }
             sr.Close();
@@ -192,14 +192,14 @@ namespace Skork.util {
         /// <param name="arr">The byte array to convert</param>
         /// <returns>Returns a string from converting a byte array.</returns>
 
-        public string getString(byte[] arr) {
-            return System.Text.Encoding.ASCII.GetString(arr);
-        }
+        public string getString(byte[] arr) => System.Text.Encoding.ASCII.GetString(arr);
+        
 
         /// <summary>
         /// Returns a string stating the instances hashcode.
         /// </summary>
-        /// <returns>A string containing the hashcode of the instnace.</returns>
+        /// <returns>A string containing the hashcode of the instance.</returns>
+        
         public override string ToString() => $"The Util class object {this.GetHashCode()}";
     }
 }

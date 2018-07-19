@@ -17,7 +17,7 @@ namespace Skork.util {
         private static Dictionary<string, SkorkSprite> sprites;
 
 
-        public SkorkInstructions() {
+        static SkorkInstructions() {
             ints = new Dictionary<string, int>();
             doubles = new Dictionary<string, double>();
             bools = new Dictionary<string, bool>();
@@ -25,36 +25,24 @@ namespace Skork.util {
         }
 
         public bool containsKey(string name, Dictionary<string, int> dictionary) {
-            if (dictionary.ContainsKey(name)) {
-                return true;
-            }
-            return false;
+            return (dictionary.ContainsKey(name));
         }
 
         public bool containsKey(string name, Dictionary<string, double> dictionary) {
-            if (dictionary.ContainsKey(name)) {
-                return true;
-            }
-            return false;
+            return (dictionary.ContainsKey(name));
         }
 
         public bool containsKey(string name, Dictionary<string, bool> dictionary) {
-            if (dictionary.ContainsKey(name)) {
-                return true;
-            }
-            return false;
+            return (dictionary.ContainsKey(name));
         }
 
         public bool containsKey(string name, Dictionary<string, SkorkSprite> dictionary) {
-            if (dictionary.ContainsKey(name)) {
-                return true;
-            }
-            return false;
+            return (dictionary.ContainsKey(name));
         }
 
         public bool createInt(string name, int value) {
             if (!containsKey(name, ints)) {
-                ints.Add(name.GetHashCode().ToString(), value);
+                ints.Add(new SkorkKeys().ToString() + "\\" + name, value);
                 return true;        
             }
             return false;

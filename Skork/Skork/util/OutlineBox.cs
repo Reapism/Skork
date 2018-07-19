@@ -53,7 +53,7 @@ namespace Skork.util {
         /// <param name="type">The type of outline {1 = green, 2 = red, 3 = gold, type >= 4 = random}</param>
         /// <param name="num">Number of times to flicker the color.</param>
 
-        public void outlineControl(ref PictureBox p, byte type, byte num = 3) {
+        public void outlineControl(ref PictureBox p, byte type, byte num = 3) {            
             this.type = type; // copy parameter to member variable.
             outlineTimer.Interval = this.interval; 
             outlineTimer.Tick += outlineControl_Tick;
@@ -71,7 +71,6 @@ namespace Skork.util {
 
         private void outlineControl_DoWork(object sender, DoWorkEventArgs e) {
 
-            //MessageBox.Show(e.Argument.ToString());
             if (e.Argument is PictureBox) {
                 this.p = (PictureBox) e.Argument;              
                 if (this.type == 1) {

@@ -13,5 +13,9 @@ namespace Skork.frm {
         public FrmUpdate() {
             InitializeComponent();
         }
+
+        private void FrmUpdate_Load(object sender, EventArgs e) {
+            this.Icon = Properties.Resources.skork_icon;
+        }
     }
 }

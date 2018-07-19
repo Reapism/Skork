@@ -63,6 +63,8 @@ namespace Skork {
                 "Skork v: " + v + '\n' +
                 "@author iReapism\n" +
                 "*/\n\n";
+
+            this.Icon = Properties.Resources.skork_icon;
         }
 
         private void frmSkork_Resize(object sender, EventArgs e) {
@@ -113,7 +115,7 @@ namespace Skork {
                             updateZoomFactor();
                         } else if (zoom.Tag.ToString().ToLower() == "custom") {
                             string s = "Enter a custom amount.:";
-                            if (d.showInputDialog(ref s).Equals(DialogResult.OK)) {
+                            if (d.showInputDialog(s).Equals(DialogResult.OK)) {
 
                             }
                         }
@@ -202,13 +204,38 @@ namespace Skork {
         }
 
         private void getLiensToolStripMenuItem_Click(object sender, EventArgs e) {
-            txtCode.AppendText("\n");
             Util u = new Util();
-            StringCollection sc = u.getLines(txtCode.Text);
-            MessageBox.Show("Hello Mr. streamer!");
+            string code = txtCode.Text;
+            StringCollection sc = u.getLines(code);
+            SkorkCode scc = new SkorkCode();
+            //sc = scc.cleanCode(ref sc);
+
+            
+            MessageBox.Show("Hello mr. streamer2!");
+
             foreach(string item in sc) {
                 MessageBox.Show(item);
             }
+        }
+
+        private void addKeyToolStripMenuItem_Click(object sender, EventArgs e) {
+            SkorkInstructions si = new SkorkInstructions();
+            Diag d = new Diag();
+
+            si.createInt(d.showInputDialog("Enter a name:"), int.Parse(d.showInputDialog("Enter a value:")));
+        }
+
+        private void listKeyToolStripMenuItem_Click(object sender, EventArgs e) {
+            SkorkInstructions si = new SkorkInstructions();
+            si.getList();
+        }
+
+        private void validIdentiferToolStripMenuItem_Click(object sender, EventArgs e) {
+            Diag d = new Diag();
+            string identifier = d.showInputDialog("Enter an identifier: ");
+
+            SkorkConventions sc = new SkorkConventions();
+            MessageBox.Show(identifier + " is " + sc.isValidIdentifier(identifier));
         }
     }
 }

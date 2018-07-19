@@ -26,8 +26,7 @@ namespace Skork.ui {
             f.grpCode.Width = (p.X / 2) - xSpace;
             f.grpOutput.Width  = (p.X / 2);
             f.grpCode.Height = (p.Y - ySpace);
-            f.grpOutput.Height = (p.Y - ySpace);
-           
+            f.grpOutput.Height = (p.Y - ySpace);           
             f.picSyntax.Dock = DockStyle.Fill;
 
             const int outline = 5; // outline in pixels between txtCode and picSyntax
