@@ -100,20 +100,22 @@
     <Compile Include="keywords\SkorkRight.cs" />
     <Compile Include="keywords\SkorkSprite.cs" />
     <Compile Include="keywords\SkorkFalse.cs" />
-    <Compile Include="keywords\SkorkInt.cs" />
     <Compile Include="keywords\SkorkKeywords.cs" />
     <Compile Include="keywords\SkorkTrue.cs" />
     <Compile Include="keywords\SkorkUp.cs" />
     <Compile Include="main\DriverProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ui\SkorkColorTable.cs" />
     <Compile Include="ui\SkorkPlane.cs" />
     <Compile Include="ui\SkorkSettings.cs" />
+    <Compile Include="ui\SkorkToolStripColorTable.cs" />
+    <Compile Include="ui\SkorkToolStripRender.cs" />
     <Compile Include="ui\UserInterface.cs" />
     <Compile Include="util\Diag.cs" />
     <Compile Include="util\DownloadPicture.cs" />
-    <Compile Include="keywords\SkorkKeys.cs" />
+    <Compile Include="util\SkorkConsole.cs" />
+    <Compile Include="util\SkorkKeysID.cs" />
     <Compile Include="util\OutlineBox.cs" />
-    <Compile Include="util\SkorkCode.cs" />
     <Compile Include="util\SkorkCompile.cs" />
     <Compile Include="util\SkorkConventions.cs" />
     <Compile Include="exceptions\SkorkException.cs" />
@@ -162,7 +164,7 @@
     <EmbeddedResource Include="resources\skork_icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="ui\github_attr.txt">
+    <Content Include="resources\github_attr.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

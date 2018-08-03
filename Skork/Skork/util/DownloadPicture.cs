@@ -1,8 +1,5 @@
 ﻿using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Reflection;
-using System.Resources;
 
 namespace Skork.util {
     class DownloadPicture {           
