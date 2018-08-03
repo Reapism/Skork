@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using Skork.util;
 using System.IO;
 using System.Reflection;
-using System.Resources;
 
 namespace Skork.frm {
     public partial class FrmSettings : Form {
