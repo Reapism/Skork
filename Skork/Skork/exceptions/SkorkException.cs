@@ -1,6 +1,11 @@
 ﻿using System;
 
 namespace Skork.exceptions {
+
+    /// <summary>
+    /// Represents a simple, vague SkorkException.
+    /// </summary>
+
     class SkorkException : Exception {
 
         private string exceptionMessage;
