@@ -1,4 +1,4 @@
-﻿using Skork.exceptions;
+﻿using Skork.keywords;
 
 namespace Skork.util {
 
@@ -8,12 +8,14 @@ namespace Skork.util {
     /// order to preserve stability within the program
     /// and not interfere with internal code.
     /// 
-    /// <para>Valid identifiers, instance variables, etc.</para>
+    /// <para>Valid identifiers:
     /// An identifier must start with a letter or an underscore.
     /// After the first character, it may contain numbers, 
-    /// letters, connectors, etc.
-    /// <para>Invalid Identifiers: Any keyword, unicode, name starting with a numeral,
+    /// letters, underscores up to and including 25 characters.</para>
+    /// <para>hello, hello1, hello209383783</para>
+    /// <para>Invalid Identifiers: Any keyword, unicode, name starting with a numeric.
     /// </para>
+    /// <para>1hello, $hello, hello$, he llo, heee...llo</para>
     /// </summary>
 
     class SkorkConventions {
@@ -27,49 +29,47 @@ namespace Skork.util {
         /// <summary>
         /// <para>Checks if a string follows skork naming conventions.</para>  
         /// </summary>
-        /// <exception cref="Skork.exceptions.SkorkException">Thrown when
-        /// an identifier is not valid.</exception>
-        /// <exception cref="Skork.exceptions.SkorkInvalidIdentifierException">Thrown when
-        /// an identifier is not valid.</exception>
         /// <param name="identifier">The identifier to check if its valid</param>
-        /// <returns>Returns if the identifier follows the conventions!</returns>
+        /// <returns>Returns 0 if the identifier follows the conventions, else an
+        /// int refering to how it failed.</returns>
 
         public int isValidIdentifier(string identifier) {
+            int startInside = 10;
             string invalidChars = "1234567890!@#$%^&*()-+=`~/,.<>;':[]{}\\|?\" ";
             char[] invalidStart = invalidChars.ToCharArray();
-            char[] invalidInside = invalidChars.Substring(9, invalidChars.Length - 9).ToCharArray();
+            char[] invalidInside = invalidChars.Substring(startInside, 
+                invalidChars.Length - startInside).ToCharArray();
             const int charLimit = 25;
             Util u = new Util();
+
+            // Checks if the identifiers first character starts with any character in invalidStart
 
             if (identifier.Substring(0, 1).IndexOfAny(invalidStart) >= 0) {
                 return 1;
             }
 
+            // Checks if the identifier contains invalidInside characters after position 0.
+
             if (identifier.IndexOfAny(invalidInside) >= 0) {
                 return 2;
             }
 
-            if (identifier.Length >= charLimit) {
+            // Checks if the identifier is greater or equal to the charLimit
+
+            if (identifier.Length > charLimit) {
                 return 3;
             }
-            //System.Windows.Forms.MessageBox.Show(invalidInside.ToString());
-            //string inv = string.Empty;
-            //foreach (char c in identifier) {
-            //    inv += c;
-            //}
-            //foreach (char c in invalidChars) {
 
-            //}
-            //if (inv.Contains(c.ToString())) {
-               return 0;
-            //}
+            // Checks if the identifier is a keyword.
+
+            SkorkKeywords sk = new SkorkKeywords();
+            foreach (string keyword in sk.getKeywords()) {
+                if (identifier.ToLower().Equals(keyword)) {
+                    return 4;
+                }
+            }
+            return 0;
         }
-           
-            //throw new SkorkInvalidIdentifierException(identifier +
-            //" is not a valid identifier! See *** for naming conventions in Skork!");
-            //throw new SkorkInvalidIdentifierException(identifier +
-            //$" is too long! Valid Identifiers are {charLimit} length or shorter!" +
-            // " See *** for naming conventions in Skork!");
-        }
+    }
 
 }
