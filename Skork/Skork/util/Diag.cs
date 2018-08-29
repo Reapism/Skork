@@ -94,12 +94,13 @@ namespace Skork.util {
         /// </summary>
         /// <param name="caption">A caption for the dialog.</param>
         /// <param name="name">The title of the dialog.</param>
+        /// <param name="allowUnicode">If unicode isn't allowed, keeps calling
+        /// the function.</param>
         /// <returns>Returns the input from the input dialog as a string.</returns>
 
-        public string showInputDialog(string caption, string name = "Skork") {
+        public string showInputDialog(string caption, string name = "Skork", bool allowUnicode = false) {
             System.Drawing.Size size = new System.Drawing.Size(200, 70);
-            Form inputBox = new Form();
-
+            Form inputBox = new Form();    
             inputBox.FormBorderStyle = FormBorderStyle.FixedDialog;
             inputBox.ClientSize = size;
             inputBox.Text = name;
@@ -128,11 +129,68 @@ namespace Skork.util {
 
             inputBox.AcceptButton = ok;
             inputBox.CancelButton = cncl;
-            caption = txt.Text;
-
             DialogResult result = inputBox.ShowDialog();
 
+            if (!allowUnicode && result == DialogResult.OK) {
+                foreach (char c in txt.Text) {
+                    if (!char.IsLetterOrDigit(c)) {
+                        MessageBox.Show("Only A-z and 0-9 are allowed!");
+                        return showInputDialog(caption, name, allowUnicode);
+                    }
+                }
+
+            }
             return txt.Text;
         }
+
+        //public int showInputDialog(string caption, string name = "Skork") {
+        //    System.Drawing.Size size = new System.Drawing.Size(200, 70);
+        //    Form inputBox = new Form();
+
+        //    inputBox.FormBorderStyle = FormBorderStyle.FixedDialog;
+        //    inputBox.ClientSize = size;
+        //    inputBox.Text = name;
+
+        //    TextBox txt = new TextBox();
+        //    txt.Size = new System.Drawing.Size(size.Width - 10, 23);
+        //    txt.Location = new System.Drawing.Point(5, 5);
+        //    txt.Text = caption;
+        //    inputBox.Controls.Add(txt);
+
+        //    Button ok = new Button();
+        //    ok.DialogResult = DialogResult.OK;
+        //    ok.Name = "okButton";
+        //    ok.Size = new System.Drawing.Size(75, 23);
+        //    ok.Text = "&OK";
+        //    ok.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+        //    inputBox.Controls.Add(ok);
+
+        //    Button cncl = new Button();
+        //    cncl.DialogResult = DialogResult.Cancel;
+        //    cncl.Name = "cancelButton";
+        //    cncl.Size = new System.Drawing.Size(75, 23);
+        //    cncl.Text = "&Cancel";
+        //    cncl.Location = new System.Drawing.Point(size.Width - 80, 39);
+        //    inputBox.Controls.Add(cncl);
+
+        //    inputBox.AcceptButton = ok;
+        //    inputBox.CancelButton = cncl;
+        //    DialogResult result = inputBox.ShowDialog();
+
+        //    int output = -1;
+        //    if (result != DialogResult.OK) {
+        //        return output;
+        //    }
+
+        //    if (!int.TryParse(txt.Text, out output)) {
+        //        MessageBox.Show("An integer number is expected...");
+        //        return showInputDialog(caption, name);
+        //    }
+        //    return output;
+        //}
+
     }
 }
+
+
+

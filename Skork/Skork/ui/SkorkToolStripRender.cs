@@ -7,6 +7,7 @@ namespace Skork.ui {
     /// Renders a toolstrip with custom theme styles 
     /// or allows complete customization of toolstrip
     /// theme styles beyond the properties dialog.
+    /// 
     /// </summary>
 
     public class SkorkToolStripRender {
@@ -22,7 +23,7 @@ namespace Skork.ui {
             setColorPalette(ref ts);
             setRenderer(ref ts);       
         }
-
+        
         public SkorkToolStripRender(ref ToolStrip ts, int theme) {
             this.colorTable = new ProfessionalColorTable();
             this.renderer = new ToolStripProfessionalRenderer(colorTable);

@@ -20,8 +20,6 @@ namespace Skork.util {
 
     class SkorkConventions {
 
-
-
         public SkorkConventions() {
 
         }

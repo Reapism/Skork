@@ -1,8 +1,7 @@
-﻿
-namespace Skork.util {
+﻿namespace Skork.util {
 
     /// <summary>
-    /// <para>Adds a unique number to separate every 
+    /// <para>Adds a unique number to separate every
     /// variable/object created in skork.</para> Not
     /// a singleton because newer objects increment
     /// the id, and statics because when creating

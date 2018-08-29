@@ -27,7 +27,7 @@ namespace Skork.util {
         /// Creating a colored outline using a picturebox.
         /// </summary>
         /// <param name="p">The picturebox to perform the flicker</param>
-        /// <param name="type">Nullable type. The color to flicker or null for a random color.</param>
+        /// <param name="type">Nullable&lt;Color&gt; type. The color to flicker or null for a random color.</param>
         /// <param name="num">The number of times to flicker the picturebox.</param>
 
         public OutlineBox(ref PictureBox p, Color? type, byte num = 3) {
@@ -35,7 +35,7 @@ namespace Skork.util {
             this.outlineColor = Color.White;
             this.outlineColor2 = Color.Transparent;
             this.outlineTimer = new Timer();
-            this.p = new PictureBox();           
+            this.p = p;
             this.interval = 100;
 
             if (type.HasValue) {
@@ -43,7 +43,7 @@ namespace Skork.util {
             } else {
                 Random rnd = new Random();
                 outlineColor = Color.FromArgb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256));
-            }            
+            }
 
             outlineTimer.Interval = this.interval;
             outlineTimer.Tick += outlineControl_Tick;
@@ -70,7 +70,7 @@ namespace Skork.util {
         private void outlineControl_DoWork(object sender, DoWorkEventArgs e) {
 
             if (e.Argument is PictureBox) {
-                this.p = (PictureBox)e.Argument;              
+                this.p = (PictureBox)e.Argument;
             } else {
                 throw new ArgumentException("Object passed is not a picturebox" + this.ToString());
             }

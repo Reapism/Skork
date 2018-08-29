@@ -64,7 +64,7 @@ namespace Skork.util {
         }
 
         /// <summary> 
-        /// Returns a substring from another string from char c1, to c2.
+        /// Returns a substring from another string from char c1[in], to c2[ex].
         /// </summary>
         /// <param name="s">The string to read from.</param>
         /// <param name="c1">Inclusive begining character.</param>
@@ -72,23 +72,60 @@ namespace Skork.util {
         /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
         public string readUntil(string s, char c1, char c2 = '\n') {
-            return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1), s.IndexOf(c2) - s.IndexOf(c1)) : "skork-null";
+            return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1),
+                s.IndexOf(c2) - s.IndexOf(c1)) : "skork-null";
         }
+
+        /// <summary> 
+        /// Returns a substring from another string from string s1[in], to c2[ex].
+        /// </summary>
+        /// <param name="s">The string to read from.</param>
+        /// <param name="c1">Inclusive begining string.</param>
+        /// <param name="c2">Exclusive ending character.</param>
+        /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
         public string readUntil(string s, string s1, char c2 = '\n') {
-            return (s.Contains(s1) && s.Contains(c2)) ? s.Substring(s.IndexOf(s1), s.IndexOf(c2) - s.IndexOf(s1)) : "skork-null";
+            return (s.Contains(s1) && s.Contains(c2)) ? s.Substring(s.IndexOf(s1),
+                s.IndexOf(c2) - s.IndexOf(s1)) : "skork-null";
         }
+
+        /// <summary> 
+        /// Returns a substring from another string from string c1[in], to s2[ex].
+        /// </summary>
+        /// <param name="s">The string to read from.</param>
+        /// <param name="c1">Inclusive begining character.</param>
+        /// <param name="c2">Exclusive ending string.</param>
+        /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
         public string readUntil(string s, char c1, string s2 = "\n") {
-            return (s.Contains(c1) && s.Contains(s2)) ? s.Substring(s.IndexOf(c1), s.IndexOf(s2) - s.IndexOf(c1)) : "skork-null";
+            return (s.Contains(c1) && s.Contains(s2)) ? s.Substring(s.IndexOf(c1),
+                s.IndexOf(s2) - s.IndexOf(c1)) : "skork-null";
         }
+
+        /// <summary> 
+        /// Returns a substring from another string from string s1[in], to s2[ex].
+        /// </summary>
+        /// <param name="s">The string to read from.</param>
+        /// <param name="c1">Inclusive begining string.</param>
+        /// <param name="c2">Exclusive ending string.</param>
+        /// <returns>The substring from s1(incl.) - s2(excl.), else; "null"</returns>
 
         public string readUntil(string s, string s1, string s2 = "\n") {
-            return (s.Contains(s1) && s.Contains(s2)) ? s.Substring(s.IndexOf(s1), s.IndexOf(s2) - s.IndexOf(s1)) : "skork-null";
+            return (s.Contains(s1) && s.Contains(s2)) ? s.Substring(s.IndexOf(s1),
+                s.IndexOf(s2) - s.IndexOf(s1)) : "skork-null";
         }
 
+        /// <summary>
+        /// Reads between 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <returns></returns>
+
         public string readBetween(string s, char c1, char c2) {
-            return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1) + 1, s.IndexOf(c2) - s.IndexOf(c1) - 1) : "skork-null";
+            return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1) + 1,
+                s.IndexOf(c2) - s.IndexOf(c1) - 1) : "skork-null";
         }
 
         /// <summary>
@@ -119,19 +156,18 @@ namespace Skork.util {
         /// <param name="c">The character to compare.</param>
         /// <returns>Returns true if the string contains only the character, false otherwise.</returns>
 
-        public bool containsOnly(string s, char c) {           
+        public bool containsOnly(string s, char c) {
             for (int i = 0; i < s.Length; i++) {
-                if (s.ElementAt<char>(i) != c) {
+                if (s.ElementAt<char>(i) != c)
                     return false;
-                }      
-            }               
-            return true;     
+            }
+            return true;
         }
 
         /// <summary>
         /// Separates a string into a collection.
         /// </summary>
-        /// <param name="s">T</param>
+        /// <param name="s">The string to get lines from.</param>
         /// <returns>A string collection of substrings.</returns>
 
         public StringCollection getLines(string s) {
@@ -146,7 +182,6 @@ namespace Skork.util {
             sr.Close();
             return sc;
         }
-
 
         /// <summary>
         /// Return the contents of the entire file as a string.
@@ -189,17 +224,24 @@ namespace Skork.util {
         /// <summary>
         /// Returns a string from converting a byte array.
         /// </summary>
-        /// <param name="arr">The byte array to convert</param>
-        /// <returns>Returns a string from converting a byte array.</returns>
+        /// <param name="arr">The byte array to convert.</param>
+        /// <returns>Returns a string from a byte array.</returns>
 
         public string getString(byte[] arr) => System.Text.Encoding.ASCII.GetString(arr);
-        
+
+        /// <summary>
+        /// Returns a byte array from converting a string.
+        /// </summary>
+        /// <param name="s">The string to convert.</param>
+        /// <returns>Returns a byte array from a string.</returns>
+
+        public byte[] getBytes(string s) => System.Text.Encoding.ASCII.GetBytes(s);
 
         /// <summary>
         /// Returns a string stating the instances hashcode.
         /// </summary>
         /// <returns>A string containing the hashcode of the instance.</returns>
-        
+
         public override string ToString() => $"The Util class object {this.GetHashCode()}";
     }
 }

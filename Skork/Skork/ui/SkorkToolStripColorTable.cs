@@ -1,11 +1,9 @@
-﻿
-
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Skork.ui {
     class SkorkToolStripColorTable : ProfessionalColorTable {
-
+        
         private ProfessionalColorTable colorTable;
 
         public SkorkToolStripColorTable() {
