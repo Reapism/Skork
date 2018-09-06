@@ -11,14 +11,27 @@ namespace Skork.keywords {
     /// </summary>
 
     class SkorkSprite : SkorkKeywords {
-        
-        protected PictureBox sprite;
 
-        public SkorkSprite() {         
-            this.sprite = new PictureBox();
-            this.sprite.Location = new Point(0, 0);
-            this.sprite.BackColor = Color.Blue;
+        protected PictureBox sprite;
+        protected string name;
+
+        /// <summary>
+        /// Default constructor for creating
+        /// a sprite.
+        /// </summary>
+        /// <param name="name">The name of the sprite.</param>
+
+        public SkorkSprite(string name) {
+            this.sprite = new PictureBox {
+                Location = new Point(0, 0),
+                BackColor = Color.Blue
+            };
+            this.name = name;
         }
+
+        /// <summary>
+        /// The location of the sprite.
+        /// </summary>
 
         public Point Location {
             get {
@@ -29,11 +42,15 @@ namespace Skork.keywords {
             }
         }
 
-        public Point getLocation() {
+        public Point GetLocation() {
             return this.sprite.Location;
         }
 
-
+        public override string ToString() {
+            return this.name + " is a " +
+                this.sprite.BackColor + " sprite at " +
+                this.sprite.Location.ToString();
+        }
 
     }
 }

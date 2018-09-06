@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 
 namespace Skork.keywords {
-    class SkorkSpriteDirection : SkorkSprite { 
-        
+    class SkorkSpriteDirection {
+
         public SkorkSpriteDirection() {
 
         }
@@ -14,10 +14,10 @@ namespace Skork.keywords {
         /// <param name="s">The sprite to move.</param>
         /// <param name="i">Moves the sprite i times down.</param>
 
-        public void down(SkorkSprite s, int i = 1) {
+        public void Down(SkorkSprite s, int i = 1) {
             if (s.Location.Y - 1 < 0 && i > 0) {
                 s.Location = new Point(s.Location.X, s.Location.Y - 1);
-                down(s, --i);
+                Down(s, --i);
             } else { return; }
         }
 
@@ -28,10 +28,10 @@ namespace Skork.keywords {
         /// <param name="s">The sprite to move.</param>
         /// <param name="i">Moves the sprite x times left.</param>
 
-        public void left(SkorkSprite s, int i = 1) {
+        public void Left(SkorkSprite s, int i = 1) {
             if (s.Location.X - 1 < 0 && i > 0) {
                 s.Location = new Point(s.Location.X - 1, s.Location.Y);
-                left(s, --i);
+                Left(s, --i);
             } else { return; }
         }
 
@@ -42,10 +42,10 @@ namespace Skork.keywords {
         /// <param name="s">The sprite to move.</param>
         /// <param name="i">Moves the sprite x times right.</param>
 
-        public void right(SkorkSprite s, int i = 1) {
+        public void Right(SkorkSprite s, int i = 1) {
             if (s.Location.X + 1 < 0 && i > 0) {
                 s.Location = new Point(s.Location.X + 1, s.Location.Y);
-                right(s, --i);
+                Right(s, --i);
             } else { return; }
         }
 
@@ -56,10 +56,10 @@ namespace Skork.keywords {
         /// <param name="s">The sprite to move.</param>
         /// <param name="i">Moves the sprite x times up.</param>
 
-        public void up(SkorkSprite s, int i = 1) {
+        public void Up(SkorkSprite s, int i = 1) {
             if (s.Location.Y + 1 < 0 && i > 0) {
                 s.Location = new Point(s.Location.X, s.Location.Y + 1);
-                up(s, --i);
+                Up(s, --i);
             } else { return; }
         }
 

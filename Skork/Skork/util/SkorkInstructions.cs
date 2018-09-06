@@ -12,40 +12,40 @@ namespace Skork.util {
 
     class SkorkInstructions {
         // <Key, Value> //
-        public static Dictionary<string, int> ints;
-        private static Dictionary<string, double> doubles;
-        private static Dictionary<string, bool> bools;
-        private static Dictionary<string, SkorkSprite> sprites;
+        public static Dictionary<string, int> Ints;
+        private static Dictionary<string, double> Doubles;
+        private static Dictionary<string, bool> Bools;
+        private static Dictionary<string, SkorkSprite> Sprites;
         private SkorkConventions sc;
 
         static SkorkInstructions() {
-            ints = new Dictionary<string, int>();
-            doubles = new Dictionary<string, double>();
-            bools = new Dictionary<string, bool>();
-            sprites = new Dictionary<string, SkorkSprite>();
+            Ints = new Dictionary<string, int>();
+            Doubles = new Dictionary<string, double>();
+            Bools = new Dictionary<string, bool>();
+            Sprites = new Dictionary<string, SkorkSprite>();
         }
 
         public SkorkInstructions() {
             sc = new SkorkConventions();
         }
 
-        private bool containsKey(string name, Dictionary<string, int> dictionary) {
+        private bool ContainsKey(string name, Dictionary<string, int> dictionary) {
             return (dictionary.ContainsKey(name));
         }
 
-        private bool containsKey(string name, Dictionary<string, double> dictionary) {
+        private bool ContainsKey(string name, Dictionary<string, double> dictionary) {
             return (dictionary.ContainsKey(name));
         }
 
-        private bool containsKey(string name, Dictionary<string, bool> dictionary) {
+        private bool ContainsKey(string name, Dictionary<string, bool> dictionary) {
             return (dictionary.ContainsKey(name));
         }
 
-        private bool containsKey(string name, Dictionary<string, SkorkSprite> dictionary) {
+        private bool ContainsKey(string name, Dictionary<string, SkorkSprite> dictionary) {
             return (dictionary.ContainsKey(name));
         }
 
-        public Type getFunctionType(string func) {
+        public Type GetFunctionType(string func) {
             switch (func) {
                 case "sprite":
                     return typeof(SkorkSprite);
@@ -59,7 +59,7 @@ namespace Skork.util {
             }
         }
 
-        public Type getType(string type) {
+        public Type GetType(string type) {
 
             switch (type) {
                 case "int":
@@ -80,21 +80,22 @@ namespace Skork.util {
             }
         }
 
-        public Type getVariableType(string type) {
+        public Type GetVariableType(string type) {
             SkorkKeywords sk = new SkorkKeywords();
             int i = 4;
-            foreach (string keyword in sk.getKeywords()) {
+
+            foreach (string keyword in sk.GetKeywords()) {
                 if (type.ToLower().Equals(keyword)) {
-                    Type t = getType(type.ToLower());
+                    Type t = GetType(type.ToLower());
                     return t;
                 }
             }
             return null;
         }
 
-        public bool createKey(string type, string name, string value) {
+        public bool CreateKey(string type, string name, string value) {
             SkorkKeywords sk = new SkorkKeywords();
-            foreach (string keyword in sk.getKeywords()) {
+            foreach (string keyword in sk.GetKeywords()) {
                 if (type.ToLower().Equals(keyword)) {
                     Type t = keyword.GetType();
                 }
@@ -110,17 +111,17 @@ namespace Skork.util {
         /// <param name="value">Value: The value of the identifier.</param>
         /// <returns>If successful.</returns>
 
-        public bool createKey(string name, int value) {
+        public bool CreateKey(string name, int value) {
 
-            int ident = sc.isValidIdentifier(name);
+            int ident = sc.IsValidIdentifier(name);
             SkorkConsole c = new SkorkConsole();
 
             switch (ident) {
                 case 0:
-                    if (containsKey(name, ints)) {
+                    if (ContainsKey(name, Ints)) {
                         return false;
                     } else {
-                        ints.Add(new SkorkKeysID().ToString() + "\\" + name, value);
+                        Ints.Add(new SkorkKeysID().ToString() + "\\" + name, value);
                         return true;
                     }
                 case 1:
@@ -150,35 +151,35 @@ namespace Skork.util {
 
         }
 
-        public bool createKey(string name, double value) {
-            if (containsKey(name, doubles)) {
+        public bool CreateKey(string name, double value) {
+            if (ContainsKey(name, Doubles)) {
                 return false;
             } else {
-                doubles.Add(name, value);
+                Doubles.Add(name, value);
                 return true;
             }
         }
 
-        public bool createKey(string name, bool value) {
-            if (containsKey(name, bools)) {
+        public bool CreateKey(string name, bool value) {
+            if (ContainsKey(name, Bools)) {
                 return false;
             } else {
-                bools.Add(name, value);
+                Bools.Add(name, value);
                 return true;
             }
         }
 
-        public bool createKey(string name, SkorkSprite value) {
-            if (containsKey(name, sprites)) {
+        public bool CreateKey(string name, SkorkSprite value) {
+            if (ContainsKey(name, Sprites)) {
                 return false;
             } else {
-                sprites.Add(name, value);
+                Sprites.Add(name, value);
                 return true;
             }
         }
 
-        public void temp() {
-            foreach (KeyValuePair<string, int> entry in ints) {
+        public void Temp() {
+            foreach (KeyValuePair<string, int> entry in Ints) {
                 MessageBox.Show($"{entry.Key} = {entry.Value}");
             }
 

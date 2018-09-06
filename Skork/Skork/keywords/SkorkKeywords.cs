@@ -39,23 +39,23 @@ namespace Skork.keywords {
             types.Add("long");
         }
 
-        public bool isFunction(string s) {
+        public bool IsFunction(string s) {
             return (funcs.Contains(s)) ? true : false;
         }
 
-        public bool isKeyword(string s) {
+        public bool IsKeyword(string s) {
             return (keywords.Contains(s)) ? true : false;
         }
 
-        public bool isType(string s) {
+        public bool IsType(string s) {
             return (types.Contains(s)) ? true : false;
         }
 
-        public StringCollection getFunctions() => SkorkKeywords.funcs;
+        public StringCollection GetFunctions() => SkorkKeywords.funcs;
 
-        public StringCollection getKeywords() => SkorkKeywords.keywords;
+        public StringCollection GetKeywords() => SkorkKeywords.keywords;
 
-        public StringCollection getTypes() => SkorkKeywords.types;
+        public StringCollection GetTypes() => SkorkKeywords.types;
 
     }
 }

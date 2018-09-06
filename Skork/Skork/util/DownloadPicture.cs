@@ -2,14 +2,13 @@
 using System.Windows.Forms;
 
 namespace Skork.util {
-    class DownloadPicture {           
+    class DownloadPicture {
 
-        public string getPath(string fileName) {
-
+        public string GetPath(string fileName) {
             return "";
         }
 
-        public Image downloadImage(string url, PictureBox p) {
+        public Image DownloadImage(string url, PictureBox p) {
             return null;
         }
 

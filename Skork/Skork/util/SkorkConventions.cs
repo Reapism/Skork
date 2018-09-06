@@ -31,7 +31,7 @@ namespace Skork.util {
         /// <returns>Returns 0 if the identifier follows the conventions, else an
         /// int refering to how it failed.</returns>
 
-        public int isValidIdentifier(string identifier) {
+        public int IsValidIdentifier(string identifier) {
             int startInside = 10;
             string invalidChars = "1234567890!@#$%^&*()-+=`~/,.<>;':[]{}\\|?\" ";
             char[] invalidStart = invalidChars.ToCharArray();
@@ -61,7 +61,7 @@ namespace Skork.util {
             // Checks if the identifier is a keyword.
 
             SkorkKeywords sk = new SkorkKeywords();
-            foreach (string keyword in sk.getKeywords()) {
+            foreach (string keyword in sk.GetKeywords()) {
                 if (identifier.ToLower().Equals(keyword)) {
                     return 4;
                 }

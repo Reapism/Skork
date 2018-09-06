@@ -13,7 +13,7 @@ namespace Skork.util {
         /// <param name="path">The path of the file.</param>
         /// <returns>The result of the existing or non-existing file.</returns>
 
-        public bool isValidPath(string path) {
+        public bool IsValidPath(string path) {
             return (System.IO.File.Exists(path)) ? true : false;
         }
 
@@ -23,7 +23,7 @@ namespace Skork.util {
         /// <param name="path">The path of the directory.</param>
         /// <returns></returns>
 
-        public bool isValidFolder(string path) {
+        public bool IsValidFolder(string path) {
             return (System.IO.Directory.Exists(path)) ? true : false;
         }
 
@@ -33,9 +33,8 @@ namespace Skork.util {
         /// <param name="s">The string to check.</param>
         /// <returns>The integer if it is, else, return -1.</returns>
 
-        public int isInt(string s) {
-            int i = 0;
-            return (int.TryParse(s, out i)) ? i : -1;
+        public int IsInt(string s) {
+            return (int.TryParse(s, out int i)) ? i : -1;
         }
 
         /// <summary>
@@ -44,9 +43,8 @@ namespace Skork.util {
         /// <param name="s"></param>
         /// <returns></returns>
 
-        public double isDouble(string s) {
-            double d = 0;
-            return (double.TryParse(s, out d)) ? d : -1.0;
+        public double IsDouble(string s) {
+            return (double.TryParse(s, out double d)) ? d : -1.0;
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Skork.util {
         /// <param name="left">The left parameter.</param>
         /// <param name="right">The right parameter.</param>
 
-        public void swap<T>(ref T left, ref T right) {
+        public void Swap<T>(ref T left, ref T right) {
             T tmp = left;
             left = right;
             right = tmp;
@@ -71,7 +69,7 @@ namespace Skork.util {
         /// <param name="c2">Exclusive ending character.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
-        public string readUntil(string s, char c1, char c2 = '\n') {
+        public string ReadUntil(string s, char c1, char c2 = '\n') {
             return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1),
                 s.IndexOf(c2) - s.IndexOf(c1)) : "skork-null";
         }
@@ -84,7 +82,7 @@ namespace Skork.util {
         /// <param name="c2">Exclusive ending character.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
-        public string readUntil(string s, string s1, char c2 = '\n') {
+        public string ReadUntil(string s, string s1, char c2 = '\n') {
             return (s.Contains(s1) && s.Contains(c2)) ? s.Substring(s.IndexOf(s1),
                 s.IndexOf(c2) - s.IndexOf(s1)) : "skork-null";
         }
@@ -97,7 +95,7 @@ namespace Skork.util {
         /// <param name="c2">Exclusive ending string.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; "null"</returns>
 
-        public string readUntil(string s, char c1, string s2 = "\n") {
+        public string ReadUntil(string s, char c1, string s2 = "\n") {
             return (s.Contains(c1) && s.Contains(s2)) ? s.Substring(s.IndexOf(c1),
                 s.IndexOf(s2) - s.IndexOf(c1)) : "skork-null";
         }
@@ -110,7 +108,7 @@ namespace Skork.util {
         /// <param name="c2">Exclusive ending string.</param>
         /// <returns>The substring from s1(incl.) - s2(excl.), else; "null"</returns>
 
-        public string readUntil(string s, string s1, string s2 = "\n") {
+        public string ReadUntil(string s, string s1, string s2 = "\n") {
             return (s.Contains(s1) && s.Contains(s2)) ? s.Substring(s.IndexOf(s1),
                 s.IndexOf(s2) - s.IndexOf(s1)) : "skork-null";
         }
@@ -123,7 +121,7 @@ namespace Skork.util {
         /// <param name="c2"></param>
         /// <returns></returns>
 
-        public string readBetween(string s, char c1, char c2) {
+        public string ReadBetween(string s, char c1, char c2) {
             return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1) + 1,
                 s.IndexOf(c2) - s.IndexOf(c1) - 1) : "skork-null";
         }
@@ -134,7 +132,7 @@ namespace Skork.util {
         /// <param name="s">The string.</param>
         /// <returns>Returns a substring from s where a new line is contained.</returns>
 
-        public string getLine(string s) {
+        public string GetLine(string s) {
             return s.Substring(0, s.LastIndexOf('\n'));
         }
 
@@ -145,7 +143,7 @@ namespace Skork.util {
         /// <param name="c">The character to terminate the substring.</param>
         /// <returns>Returns a substring from s where c is contained.</returns>
 
-        public string getLine(string s, char c) {
+        public string GetLine(string s, char c) {
             return s.Substring(0, s.LastIndexOf(c));
         }
 
@@ -156,7 +154,7 @@ namespace Skork.util {
         /// <param name="c">The character to compare.</param>
         /// <returns>Returns true if the string contains only the character, false otherwise.</returns>
 
-        public bool containsOnly(string s, char c) {
+        public bool ContainsOnly(string s, char c) {
             for (int i = 0; i < s.Length; i++) {
                 if (s.ElementAt<char>(i) != c)
                     return false;
@@ -170,13 +168,13 @@ namespace Skork.util {
         /// <param name="s">The string to get lines from.</param>
         /// <returns>A string collection of substrings.</returns>
 
-        public StringCollection getLines(string s) {
+        public StringCollection GetLines(string s) {
             StringCollection sc = new StringCollection();
             StringReader sr = new StringReader(s);
             string line;
 
             while (((line = sr.ReadLine()) != null)) {
-                if (line != string.Empty && !(containsOnly(line, ' ')))
+                if (line != string.Empty && !(ContainsOnly(line, ' ')))
                     sc.Add(line);
             }
             sr.Close();
@@ -189,7 +187,7 @@ namespace Skork.util {
         /// <param name="path">The path of the file to read from.</param>
         /// <returns>All the contents of the file as type string.</returns>
 
-        public string readFile(string path) {
+        public string ReadFile(string path) {
             string s;
             try {
                 s = System.IO.File.ReadAllText(path);
@@ -206,7 +204,7 @@ namespace Skork.util {
         /// <param name="url">The url to download from.</param>
         /// <returns></returns>
 
-        public byte[] getOnlineFile(string url) {
+        public byte[] GetOnlineFile(string url) {
             byte[] b;
 
             using (WebClient client = new WebClient()) {
@@ -227,7 +225,7 @@ namespace Skork.util {
         /// <param name="arr">The byte array to convert.</param>
         /// <returns>Returns a string from a byte array.</returns>
 
-        public string getString(byte[] arr) => System.Text.Encoding.ASCII.GetString(arr);
+        public string GetString(byte[] arr) => System.Text.Encoding.ASCII.GetString(arr);
 
         /// <summary>
         /// Returns a byte array from converting a string.
@@ -235,13 +233,13 @@ namespace Skork.util {
         /// <param name="s">The string to convert.</param>
         /// <returns>Returns a byte array from a string.</returns>
 
-        public byte[] getBytes(string s) => System.Text.Encoding.ASCII.GetBytes(s);
+        public byte[] GetBytes(string s) => System.Text.Encoding.ASCII.GetBytes(s);
 
         /// <summary>
         /// Returns a string stating the instances hashcode.
         /// </summary>
         /// <returns>A string containing the hashcode of the instance.</returns>
 
-        public override string ToString() => $"The Util class object {this.GetHashCode()}";
+        public override string ToString() => $"The Util class object {GetHashCode()}";
     }
 }

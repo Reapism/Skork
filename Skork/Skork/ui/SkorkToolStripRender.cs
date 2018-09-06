@@ -20,45 +20,45 @@ namespace Skork.ui {
             this.renderer = new ToolStripProfessionalRenderer(colorTable);
             
 
-            setColorPalette(ref ts);
-            setRenderer(ref ts);       
+            SetColorPalette(ref ts);
+            SetRenderer(ref ts);       
         }
         
         public SkorkToolStripRender(ref ToolStrip ts, int theme) {
             this.colorTable = new ProfessionalColorTable();
             this.renderer = new ToolStripProfessionalRenderer(colorTable);
             
-            setColorPalette(ref ts, ref theme);
-            setRenderer(ref ts, ref theme);
+            SetColorPalette(ref ts, ref theme);
+            SetRenderer(ref ts, ref theme);
             
         }
 
-        public ToolStripProfessionalRenderer getRenderer() {
+        public ToolStripProfessionalRenderer GetRenderer() {
             return renderer;
         }
 
-        public ProfessionalColorTable getColorPalete() {
+        public ProfessionalColorTable GetColorPalete() {
             return colorTable;
         }
 
-        private void setRenderer(ref ToolStrip ts) {
+        private void SetRenderer(ref ToolStrip ts) {
             renderer = new ToolStripProfessionalRenderer(colorTable);
             ts.GripStyle = ToolStripGripStyle.Hidden;
             ts.RenderMode = ToolStripRenderMode.Professional;
             ts.Renderer = this.renderer;
         }
 
-        private void setRenderer(ref ToolStrip ts, ref int theme) {
+        private void SetRenderer(ref ToolStrip ts, ref int theme) {
 
         }
 
-        private void setColorPalette(ref ToolStrip ts) {
+        private void SetColorPalette(ref ToolStrip ts) {
             colorTable = new SkorkToolStripColorTable();
             ts.ForeColor = Color.Black;
             
         }
 
-        private void setColorPalette(ref ToolStrip ts, ref int theme) {
+        private void SetColorPalette(ref ToolStrip ts, ref int theme) {
 
         }
         

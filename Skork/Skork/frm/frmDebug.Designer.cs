@@ -1,5 +1,5 @@
 ﻿namespace Skork.frm {
-    partial class frmDebug {
+    partial class FrmDebug {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -32,7 +32,7 @@
             this.ClientSize = new System.Drawing.Size(696, 390);
             this.Name = "Debug";
             this.Text = "Debug";
-            this.Load += new System.EventHandler(this.frmDebug_Load);
+            this.Load += new System.EventHandler(this.FrmDebug_Load);
             this.ResumeLayout(false);
 
         }

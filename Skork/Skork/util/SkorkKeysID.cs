@@ -12,7 +12,7 @@
     class SkorkKeysID {
 
         // The unique id.
-        private static long id;
+        private static long Id;
 
         /// <summary>
         /// Static constructor which initializes
@@ -20,16 +20,16 @@
         /// </summary>
 
         static SkorkKeysID() {
-            id = 0;
+            Id = 0;
         }
 
         /// <summary>
         /// Default constructor which increments
         /// id by 1.
         /// </summary>
-        
+
         public SkorkKeysID() {
-            id += 1;
+            Id += 1;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@
         /// </summary>
         /// <returns></returns>
 
-        public override string ToString() => id.ToString();
+        public override string ToString() => Id.ToString();
 
     }
 }

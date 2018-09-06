@@ -1,32 +1,34 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using System.Reflection;
-using System.Collections.Specialized;
+﻿using Skork.frm;
 using Skork.ui;
 using Skork.util;
-using Skork.frm;
-using System.Collections.Generic;
+using System;
+using System.Collections.Specialized;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
-namespace Skork {
+namespace Skork
+{
 
-    public partial class frmSkork : Form {
+    public partial class FrmSkork : Form
+    {
 
         /// <summary>
         /// Default constructor
         /// </summary>
 
-        public frmSkork() {
+        public FrmSkork()
+        {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
 
             Point frmSize = new Point(750, 500);
-            this.Width = frmSize.X;
-            this.Height = frmSize.Y;
+            Width = frmSize.X;
+            Height = frmSize.Y;
 
-            UserInterface.drawMain(this, ref frmSize);
-            OutlineBox o = new OutlineBox(ref picSyntax, null, 3);
+            UserInterface.DrawMain(this, ref frmSize);
+            OutlineBox o = new OutlineBox(ref this.picSyntax, null, 3);
         }
 
         /// <summary>
@@ -36,29 +38,33 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void frmSkork_Load(object sender, EventArgs e) {
-            addHandlers();
-            addToLoad();
-            startText();
+        private void FrmSkork_Load(object sender, EventArgs e)
+        {
+            AddHandlers();
+            AddToLoad();
+            StartText();
         }
 
         /// <summary>
         /// All dynamic event handlers.
         /// </summary>
 
-        private void addHandlers() {
-            lblZoom.MouseDown += lblZoom_MouseDown;
-            ctxZoomFactor.ItemClicked += ctxZoomFactor_ItemClicked;
+        private void AddHandlers()
+        {
+            this.lblZoom.MouseDown += LblZoom_MouseDown;
+            this.ctxZoomFactor.ItemClicked += CtxZoomFactor_ItemClicked;
         }
 
-        private void addToLoad() {           
-            this.Icon = Properties.Resources.skork_icon;
-            new SkorkToolStripRender(ref tsMain);
+        private void AddToLoad()
+        {
+            Icon = Properties.Resources.skork_icon;
+            new SkorkToolStripRender(ref this.tsMain);
         }
 
-        private void startText() {
+        private void StartText()
+        {
             string v = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            this.Text = "Skork Application - " + v;
+            Text = "Skork Application - " + v;
             this.txtCode.Clear();
             this.txtCode.AppendText(
                 "/**\n" +
@@ -67,26 +73,30 @@ namespace Skork {
                 "*/\n\n");
         }
 
-        private void frmSkork_Resize(object sender, EventArgs e) {
-            Point p = new Point(this.Width, this.Height);
-            UserInterface.drawMain(this, ref p);
+        private void FrmSkork_Resize(object sender, EventArgs e)
+        {
+            Point p = new Point(Width, Height);
+            UserInterface.DrawMain(this, ref p);
         }
 
-        public void appendText(string text, Color color, bool addNewLine = false) {
-            txtCode.SuspendLayout();
-            txtCode.SelectionColor = color;
-            txtCode.AppendText(addNewLine ? $"{text}{Environment.NewLine}" : "\\");
-            txtCode.ScrollToCaret();
-            txtCode.ResumeLayout();
+        public void AppendText(string text, Color color, bool addNewLine = false)
+        {
+            this.txtCode.SuspendLayout();
+            this.txtCode.SelectionColor = color;
+            this.txtCode.AppendText(addNewLine ? $"{text}{Environment.NewLine}" : "\\");
+            this.txtCode.ScrollToCaret();
+            this.txtCode.ResumeLayout();
         }
 
-        private void txtCode_TextChanged(object sender, EventArgs e) {
-            updateZoomFactor();
-            
+        private void TxtCode_TextChanged(object sender, EventArgs e)
+        {
+            UpdateZoomFactor();
+
         }
 
-        private void updateZoomFactor() {
-            lblZoom.Text = txtCode.ZoomFactor * 100 + "%";
+        private void UpdateZoomFactor()
+        {
+            this.lblZoom.Text = this.txtCode.ZoomFactor * 100 + "%";
         }
 
         /// <summary>
@@ -97,7 +107,8 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void ctxZoomFactor_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+        private void CtxZoomFactor_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
             if (e.ClickedItem is ToolStripItem) {
                 ToolStripMenuItem zoom = (ToolStripMenuItem)e.ClickedItem;
@@ -110,19 +121,19 @@ namespace Skork {
                             foreach (ToolStripMenuItem i in zoom.DropDownItems) {
                                 if (i.Tag.ToString().Contains('.')) {
                                     float zmFct = float.Parse(i.Tag.ToString());
-                                    txtCode.ZoomFactor = zmFct;
-                                    updateZoomFactor();
+                                    this.txtCode.ZoomFactor = zmFct;
+                                    UpdateZoomFactor();
                                 }
                             }
                         }
 
                         if (zoom.Tag.ToString().Contains('.')) {
                             float zmFct = float.Parse(zoom.Tag.ToString());
-                            txtCode.ZoomFactor = zmFct;
-                            updateZoomFactor();
+                            this.txtCode.ZoomFactor = zmFct;
+                            UpdateZoomFactor();
                         } else if (zoom.Tag.ToString().ToLower() == "custom") {
                             string s = "Enter a custom amount.:";
-                            if (d.showInputDialog(s,"Skork").Equals(DialogResult.OK)) {
+                            if (d.ShowInputDialog(s, "Skork").Equals(DialogResult.OK)) {
 
                             }
                         }
@@ -139,14 +150,14 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void lblZoom_MouseDown(object sender, MouseEventArgs e) {
-            if (sender is ToolStripStatusLabel) {
-                ToolStripStatusLabel lbl = (ToolStripStatusLabel)sender;
+        private void LblZoom_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender is ToolStripStatusLabel lbl) {      
                 // sender = (Label) sender; // explicit cast 
-                ctxZoomFactor.Show(this, stsMain.Location.X, stsMain.Location.Y + stsMain.Height);
+                this.ctxZoomFactor.Show(this, this.stsMain.Location.X, this.stsMain.Location.Y + this.stsMain.Height);
                 //lbl.ForeColor = Color.Red;
             }
-            updateZoomFactor();
+            UpdateZoomFactor();
         }
 
         /// <summary>
@@ -156,20 +167,23 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void txtCode_MouseHover(object sender, EventArgs e) {
-            updateZoomFactor();
+        private void TxtCode_MouseHover(object sender, EventArgs e)
+        {
+            UpdateZoomFactor();
         }
 
-        private void btnCTXCompile_Click(object sender, EventArgs e) {
-            new OutlineBox(ref picSyntax, Color.Green, 3);
-            new SkorkCompile(txtCode.Text).compile();
+        private void BtnCTXCompile_Click(object sender, EventArgs e)
+        {
+            new OutlineBox(ref this.picSyntax, Color.Green, 3);
+            new SkorkCompile(this.txtCode.Text).Compile();
 
         }
 
-        private void btnCTXCompileDebug_Click(object sender, EventArgs e) {
-            new OutlineBox(ref picSyntax, Color.Red, 3);
+        private void BtnCTXCompileDebug_Click(object sender, EventArgs e)
+        {
+            new OutlineBox(ref this.picSyntax, Color.Red, 3);
 
-            Type[] args = SkorkInstructions.ints.GetType().GetGenericArguments();
+            Type[] args = SkorkInstructions.Ints.GetType().GetGenericArguments();
             Type keyType = args[0];
             Type valueType = args[1];
 
@@ -179,43 +193,50 @@ namespace Skork {
 
         }
 
-        private void btnCTXSave_Click(object sender, EventArgs e) {
-            new OutlineBox(ref picSyntax, null, 3);
+        private void BtnCTXSave_Click(object sender, EventArgs e)
+        {
+            new OutlineBox(ref this.picSyntax, null, 3);
         }
 
-        private void btnSettings_Click(object sender, EventArgs e) {
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
             new FrmSettings("Preferences").Show(this);
         }
 
-        private void btnRedrawGrid_Click(object sender, EventArgs e) {
+        private void BtnRedrawGrid_Click(object sender, EventArgs e)
+        {
             SkorkPlane p = new SkorkPlane();
-            p.drawPlane(ref pnlPlane, 4);
+            p.DrawPlane(ref this.pnlPlane, 4);
         }
 
-        private void btnHelp_Click(object sender, EventArgs e) {
+        private void BtnHelp_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void getLiensToolStripMenuItem_Click(object sender, EventArgs e) {
-            StringCollection sc = new Util().getLines(txtCode.Text);
-            foreach(string line in sc) {
+        private void GetLiensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringCollection sc = new Util().GetLines(this.txtCode.Text);
+            foreach (string line in sc) {
                 MessageBox.Show(line);
             }
 
         }
 
-        private void validIdentiferToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ValidIdentiferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             SkorkInstructions si = new SkorkInstructions();
             Diag d = new Diag();
 
-            si.createKey(d.showInputDialog("Enter a variable"),
-                (int.Parse(d.showInputDialog("Enter a int value",""))));
+            si.CreateKey(d.ShowInputDialog("Enter a variable"),
+                (int.Parse(d.ShowInputDialog("Enter a int value", ""))));
 
 
-            si.temp();
+            si.Temp();
         }
 
-        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void NewProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             new FrmSettings("Project").Show(this);
 
         }
@@ -226,9 +247,10 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btnCopy_Click(object sender, EventArgs e) {
+        private void BtnCopy_Click(object sender, EventArgs e)
+        {
             this.txtCode.Copy();
-            new OutlineBox(ref picSyntax, Color.Red, 3);
+            new OutlineBox(ref this.picSyntax, Color.Red, 3);
         }
 
         /// <summary>
@@ -237,38 +259,45 @@ namespace Skork {
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btnPaste_Click(object sender, EventArgs e) {
+        private void BtnPaste_Click(object sender, EventArgs e)
+        {
             this.txtCode.Paste();
-            new OutlineBox(ref picSyntax, Color.SandyBrown, 3);
+            new OutlineBox(ref this.picSyntax, Color.SandyBrown, 3);
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e) {
+        private void BtnSelectAll_Click(object sender, EventArgs e)
+        {
             this.txtCode.SelectAll();
-            new OutlineBox(ref picSyntax, Color.Gold, 3);
+            new OutlineBox(ref this.picSyntax, Color.Gold, 3);
         }
 
-        private void btnCut_Click(object sender, EventArgs e) {
+        private void BtnCut_Click(object sender, EventArgs e)
+        {
             this.txtCode.Cut();
-            new OutlineBox(ref picSyntax, Color.LightSalmon, 3);
+            new OutlineBox(ref this.picSyntax, Color.LightSalmon, 3);
         }
 
-        private void btnDelete_Click(object sender, EventArgs e) {
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
             SendKeys.Send("\b");
-            new OutlineBox(ref picSyntax, Color.Red, 3);
+            new OutlineBox(ref this.picSyntax, Color.Red, 3);
         }
 
-        private void btnUndo_Click(object sender, EventArgs e) {
+        private void BtnUndo_Click(object sender, EventArgs e)
+        {
             this.txtCode.Undo();
-            new OutlineBox(ref picSyntax, Color.Blue, 3);
+            new OutlineBox(ref this.picSyntax, Color.Blue, 3);
         }
 
-        private void btnRedo_Click(object sender, EventArgs e) {
+        private void BtnRedo_Click(object sender, EventArgs e)
+        {
             this.txtCode.Redo();
-            new OutlineBox(ref picSyntax, Color.Aqua, 3);
+            new OutlineBox(ref this.picSyntax, Color.Aqua, 3);
         }
 
-        private void btnFind_Click(object sender, EventArgs e) {
-            int found = this.txtCode.Find(new Diag().showInputDialog("Enter the text you want to find.", "Find"));
+        private void BtnFind_Click(object sender, EventArgs e)
+        {
+            int found = this.txtCode.Find(new Diag().ShowInputDialog("Enter the text you want to find.", "Find"));
             if (found != -1) {
                 this.txtCode.SelectionStart = found;
 
@@ -277,21 +306,23 @@ namespace Skork {
             }
         }
 
-        private void btnFindRepl_Click(object sender, EventArgs e) {
-            string input = new Diag().showInputDialog("Enter the text you want to find.",
+        private void BtnFindRepl_Click(object sender, EventArgs e)
+        {
+            string input = new Diag().ShowInputDialog("Enter the text you want to find.",
                 "Find && Replace");
-            string repl = new Diag().showInputDialog("Enter the text you want to replace.",
+            string repl = new Diag().ShowInputDialog("Enter the text you want to replace.",
                 "Find && Replace");
             while (this.txtCode.Find(input, RichTextBoxFinds.None) != -1) {
 
                 this.txtCode.Text.Replace(input, repl);
                 this.txtCode.SelectionStart = this.txtCode.SelectionStart + input.Length;
-                new OutlineBox(ref picSyntax, Color.Green, 5);
+                new OutlineBox(ref this.picSyntax, Color.Green, 5);
             }
-            new OutlineBox(ref picSyntax, Color.Red, 5);
+            new OutlineBox(ref this.picSyntax, Color.Red, 5);
         }
 
-        private void btnPref_Click(object sender, EventArgs e) {
+        private void BtnPref_Click(object sender, EventArgs e)
+        {
             new FrmSettings("Preferences").Show(this);
         }
     }

@@ -8,9 +8,9 @@ namespace Skork.ui {
 
         }
 
-        public void parseText(string path, string attr) {
+        public void ParseText(string path, string attr) {
             Util u = new Util();
-            if (u.isValidPath(path)) {
+            if (u.IsValidPath(path)) {
                 string txt = System.IO.File.ReadAllText(path);
 
                 int start = txt.LastIndexOf(attr);

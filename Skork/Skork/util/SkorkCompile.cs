@@ -1,5 +1,5 @@
-﻿using System.Collections.Specialized;
-using Skork.keywords;
+﻿using Skork.keywords;
+using System.Collections.Specialized;
 using System.Windows.Forms;
 
 namespace Skork.util {
@@ -9,8 +9,8 @@ namespace Skork.util {
         /// <summary>
         /// 
         /// </summary>
-        
-        private StringCollection code; 
+
+        private StringCollection code;
 
         /// <summary>
         /// Converts string to string collection.
@@ -18,8 +18,8 @@ namespace Skork.util {
         /// <param name="code"></param>
 
         public SkorkCompile(string code) {
-            this.code = new Util().getLines(code);
-            cleanCode();
+            this.code = new Util().GetLines(code);
+            CleanCode();
         }
 
         /// <summary>
@@ -30,16 +30,16 @@ namespace Skork.util {
 
         public SkorkCompile(StringCollection code) {
             this.code = code;
-            cleanCode();
+            CleanCode();
         }
 
 
 
-        public void compile() {
+        public void Compile() {
             byte returnType = 0;
 
             foreach (string item in this.code) {
-                returnType = parseCodeLine(item);
+                returnType = ParseCodeLine(item);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Skork.util {
         /// <param name="codeLine">The code line to parse.</param>
         /// <returns></returns>
 
-        private byte parseCodeLine(string codeLine) {
+        private byte ParseCodeLine(string codeLine) {
             SkorkKeywords sk = new SkorkKeywords();
             Util u = new Util();
 
@@ -60,9 +60,9 @@ namespace Skork.util {
             char[] trails = { '\n', ' ' };
 
             if (codeLine.Contains(";")) {
-                line = u.getLine(codeLine, ';').ToLower();
+                line = u.GetLine(codeLine, ';').ToLower();
 
-                foreach (string function in sk.getFunctions()) {
+                foreach (string function in sk.GetFunctions()) {
                     if (line.Contains(function)) {
                         //find out which function
 
@@ -70,28 +70,28 @@ namespace Skork.util {
                     }
                 }
 
-                foreach (string keyword in sk.getKeywords()) {
+                foreach (string keyword in sk.GetKeywords()) {
                     if (line.ToLower().Contains(keyword)) {
                         line.Insert(line.IndexOf(keyword), "\\");
                     }
                 }
 
-                foreach (string type in sk.getTypes()) {
+                foreach (string type in sk.GetTypes()) {
                     if (line.Contains(type.ToLower())) {
                         string tmp = string.Empty;
-                        int nextSpace = line.LastIndexOf(' ');                       
-                        
-                            while (nextSpace != -1) {
-                                tmp = line.Substring(0, line.LastIndexOf(' '));
-                                nextSpace = nextSpace + line.LastIndexOf(' ');
-                                MessageBox.Show(tmp);
-                            }
+                        int nextSpace = line.LastIndexOf(' ');
 
-                       
+                        while (nextSpace != -1) {
+                            tmp = line.Substring(0, line.LastIndexOf(' '));
+                            nextSpace = nextSpace + line.LastIndexOf(' ');
+                            MessageBox.Show(tmp);
+                        }
+
+
                         line = line.TrimStart(trails);
                         line = line.Insert(0, "\\");
                         line = line.Insert(line.IndexOf(type), "\\");
-                       
+
                     }
                 }
 
@@ -108,15 +108,15 @@ namespace Skork.util {
         /// code to the bare minimum for compiling.
         /// </summary>
 
-        private void cleanCode() {
+        private void CleanCode() {
             StringCollection newCode = new StringCollection();
             string appendedLine = string.Empty;
 
-            foreach (string line in code) {
+            foreach (string line in this.code) {
                 MessageBox.Show(line);
             }
 
-            foreach (string line in code) {
+            foreach (string line in this.code) {
                 // somewhere in here need to remove
                 // trailing lines and spaces.
                 if (line.Contains(";")) {
@@ -129,9 +129,9 @@ namespace Skork.util {
 
 
             }
-            code = newCode;
+            this.code = newCode;
 
-            foreach (string line in code) {
+            foreach (string line in this.code) {
                 MessageBox.Show("after   " + line);
             }
         }
@@ -141,14 +141,14 @@ namespace Skork.util {
         // A line is valid if it contains a keyword or variable name or comment.
         // int\hi\=\5;
 
-        private string getCodeLine(string line) {
+        private string GetCodeLine(string line) {
             string codeLine = string.Empty;
             SkorkKeywords sk = new SkorkKeywords();
             if (line.Contains(";")) {
 
 
 
-                foreach (string keyword in sk.getKeywords()) {
+                foreach (string keyword in sk.GetKeywords()) {
 
                     if (line.Contains(keyword)) {
 

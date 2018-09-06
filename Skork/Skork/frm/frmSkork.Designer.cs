@@ -1,6 +1,6 @@
 ﻿namespace Skork
 {
-    partial class frmSkork
+    partial class FrmSkork
     {
         /// <summary>
         /// Required designer variable.
@@ -13,8 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -29,7 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSkork));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSkork));
             this.grpCode = new System.Windows.Forms.GroupBox();
             this.txtCode = new System.Windows.Forms.RichTextBox();
             this.ctxCode = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -128,8 +127,8 @@
             this.txtCode.TabIndex = 1;
             this.txtCode.Text = "/**\nSkork - v\n@author iReapism\n*/";
             this.txtCode.ZoomFactor = 1.5F;
-            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
-            this.txtCode.MouseHover += new System.EventHandler(this.txtCode_MouseHover);
+            this.txtCode.TextChanged += new System.EventHandler(this.TxtCode_TextChanged);
+            this.txtCode.MouseHover += new System.EventHandler(this.TxtCode_MouseHover);
             // 
             // ctxCode
             // 
@@ -147,35 +146,35 @@
             this.btnCTXCompile.Name = "btnCTXCompile";
             this.btnCTXCompile.Size = new System.Drawing.Size(170, 22);
             this.btnCTXCompile.Text = "Compile";
-            this.btnCTXCompile.Click += new System.EventHandler(this.btnCTXCompile_Click);
+            this.btnCTXCompile.Click += new System.EventHandler(this.BtnCTXCompile_Click);
             // 
             // btnCTXCompileDebug
             // 
             this.btnCTXCompileDebug.Name = "btnCTXCompileDebug";
             this.btnCTXCompileDebug.Size = new System.Drawing.Size(170, 22);
             this.btnCTXCompileDebug.Text = "Compile && Debug";
-            this.btnCTXCompileDebug.Click += new System.EventHandler(this.btnCTXCompileDebug_Click);
+            this.btnCTXCompileDebug.Click += new System.EventHandler(this.BtnCTXCompileDebug_Click);
             // 
             // btnCTXSave
             // 
             this.btnCTXSave.Name = "btnCTXSave";
             this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
             this.btnCTXSave.Text = "Save";
-            this.btnCTXSave.Click += new System.EventHandler(this.btnCTXSave_Click);
+            this.btnCTXSave.Click += new System.EventHandler(this.BtnCTXSave_Click);
             // 
             // getLiensToolStripMenuItem
             // 
             this.getLiensToolStripMenuItem.Name = "getLiensToolStripMenuItem";
             this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.getLiensToolStripMenuItem.Text = "GetLines";
-            this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.getLiensToolStripMenuItem_Click);
+            this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.GetLiensToolStripMenuItem_Click);
             // 
             // validIdentiferToolStripMenuItem
             // 
             this.validIdentiferToolStripMenuItem.Name = "validIdentiferToolStripMenuItem";
             this.validIdentiferToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.validIdentiferToolStripMenuItem.Text = "ValidIdentifer";
-            this.validIdentiferToolStripMenuItem.Click += new System.EventHandler(this.validIdentiferToolStripMenuItem_Click);
+            this.validIdentiferToolStripMenuItem.Click += new System.EventHandler(this.ValidIdentiferToolStripMenuItem_Click);
             // 
             // picSyntax
             // 
@@ -219,7 +218,7 @@
             this.btnRedrawGrid.Name = "btnRedrawGrid";
             this.btnRedrawGrid.Size = new System.Drawing.Size(146, 22);
             this.btnRedrawGrid.Text = "Redraw grid...";
-            this.btnRedrawGrid.Click += new System.EventHandler(this.btnRedrawGrid_Click);
+            this.btnRedrawGrid.Click += new System.EventHandler(this.BtnRedrawGrid_Click);
             // 
             // addKeyToolStripMenuItem
             // 
@@ -302,7 +301,7 @@
             this.newProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.newProjectToolStripMenuItem.Text = "New Project";
-            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
+            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.NewProjectToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -408,16 +407,16 @@
             this.btnUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.btnUndo.Size = new System.Drawing.Size(226, 22);
             this.btnUndo.Text = "Undo";
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            this.btnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
             // 
             // btnRedo
             // 
             this.btnRedo.Name = "btnRedo";
-            this.btnRedo.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.btnRedo.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
             | System.Windows.Forms.Keys.Z)));
             this.btnRedo.Size = new System.Drawing.Size(226, 22);
             this.btnRedo.Text = "Redo";
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            this.btnRedo.Click += new System.EventHandler(this.BtnRedo_Click);
             // 
             // toolStripSeparator1
             // 
@@ -430,7 +429,7 @@
             this.btnCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.btnCut.Size = new System.Drawing.Size(226, 22);
             this.btnCut.Text = "Cut";
-            this.btnCut.Click += new System.EventHandler(this.btnCut_Click);
+            this.btnCut.Click += new System.EventHandler(this.BtnCut_Click);
             // 
             // btnCopy
             // 
@@ -438,7 +437,7 @@
             this.btnCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.btnCopy.Size = new System.Drawing.Size(226, 22);
             this.btnCopy.Text = "Copy";
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            this.btnCopy.Click += new System.EventHandler(this.BtnCopy_Click);
             // 
             // btnPaste
             // 
@@ -446,7 +445,7 @@
             this.btnPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.btnPaste.Size = new System.Drawing.Size(226, 22);
             this.btnPaste.Text = "Paste";
-            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            this.btnPaste.Click += new System.EventHandler(this.BtnPaste_Click);
             // 
             // btnDelete
             // 
@@ -454,7 +453,7 @@
             this.btnDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.btnDelete.Size = new System.Drawing.Size(226, 22);
             this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // btnSelectAll
             // 
@@ -462,7 +461,7 @@
             this.btnSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.btnSelectAll.Size = new System.Drawing.Size(226, 22);
             this.btnSelectAll.Text = "Select All";
-            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            this.btnSelectAll.Click += new System.EventHandler(this.BtnSelectAll_Click);
             // 
             // toolStripSeparator2
             // 
@@ -475,16 +474,16 @@
             this.btnFind.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.btnFind.Size = new System.Drawing.Size(226, 22);
             this.btnFind.Text = "Find";
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.btnFind.Click += new System.EventHandler(this.BtnFind_Click);
             // 
             // btnFindRepl
             // 
             this.btnFindRepl.Name = "btnFindRepl";
-            this.btnFindRepl.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.btnFindRepl.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
             | System.Windows.Forms.Keys.F)));
             this.btnFindRepl.Size = new System.Drawing.Size(226, 22);
             this.btnFindRepl.Text = "Find && Replace";
-            this.btnFindRepl.Click += new System.EventHandler(this.btnFindRepl_Click);
+            this.btnFindRepl.Click += new System.EventHandler(this.BtnFindRepl_Click);
             // 
             // toolStripSeparator3
             // 
@@ -496,7 +495,7 @@
             this.btnPref.Name = "btnPref";
             this.btnPref.Size = new System.Drawing.Size(226, 22);
             this.btnPref.Text = "Preferences";
-            this.btnPref.Click += new System.EventHandler(this.btnPref_Click);
+            this.btnPref.Click += new System.EventHandler(this.BtnPref_Click);
             // 
             // btnView
             // 
@@ -526,7 +525,7 @@
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(51, 22);
             this.btnHelp.Text = "  Help";
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // gitHubWikiToolStripMenuItem
             // 
@@ -549,7 +548,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(23, 22);
             this.btnSettings.Text = "Settings";
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
             // ctxZoomFactor
             // 
@@ -652,7 +651,7 @@
             this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
             // 
-            // frmSkork
+            // FrmSkork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -661,10 +660,10 @@
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.stsMain);
             this.MinimumSize = new System.Drawing.Size(750, 500);
-            this.Name = "frmSkork";
+            this.Name = "FrmSkork";
             this.Text = "Skork Application - ";
-            this.Load += new System.EventHandler(this.frmSkork_Load);
-            this.Resize += new System.EventHandler(this.frmSkork_Resize);
+            this.Load += new System.EventHandler(this.FrmSkork_Load);
+            this.Resize += new System.EventHandler(this.FrmSkork_Resize);
             this.grpCode.ResumeLayout(false);
             this.ctxCode.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).EndInit();

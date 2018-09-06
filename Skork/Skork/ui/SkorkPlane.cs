@@ -9,8 +9,8 @@ namespace Skork.ui {
         private int numY;
 
         public SkorkPlane() {
-            numX = 0;
-            numY = 0;           
+            this.numX = 0;
+            this.numY = 0;
         }
 
         /// <summary>
@@ -21,57 +21,59 @@ namespace Skork.ui {
         /// <param name="sizeOfPixel">The size of each coordinate box.</param>
         /// <returns>A bitmap image of a grind</returns>
 
-        public Bitmap drawGrid(int width, int height, int sizeOfPixel) {
+        public Bitmap DrawGrid(int width, int height, int sizeOfPixel) {
             Bitmap b = new Bitmap(width, height);
             int x, y;
 
             for (y = 0; y < height; y += sizeOfPixel) {
                 x = 0;
-                
+
                 for (x = 0; x < width; x += 1) {
                     if (!(x + sizeOfPixel > width) || (x < width + sizeOfPixel)) {
                         b.SetPixel(x, y, Color.White);
                     }
                 }
             }
-                      
+
             for (x = 0; x < width; x += sizeOfPixel) {
                 y = 0;
 
                 for (y = 0; y < height; y += 1) {
                     if (!(y + sizeOfPixel > height) || (y < height + sizeOfPixel)) {
                         b.SetPixel(x, y, Color.White);
-                    }                       
+                    }
                 }
             }
 
             return b;
         }
 
-        public void drawPlane(ref Panel plane, int i) {
+        public void DrawPlane(ref Panel plane, int i) {
 
-            foreach(object item in plane.Controls) {
-                if (item is PictureBox) {
-                    PictureBox p = (PictureBox)item;
+            foreach (object item in plane.Controls) {
+                if (item is PictureBox p) {
                     p.Dispose();
                 }
             }
 
-            Image img = drawGrid(plane.Width, plane.Height, i);
-            PictureBox pic = new PictureBox();
-            pic.BackgroundImage = img;
-            pic.BackColor = Color.Black;
-            pic.BackgroundImageLayout = ImageLayout.Stretch;
+            Image img = DrawGrid(plane.Width, plane.Height, i);
+
+            PictureBox pic = new PictureBox {
+                BackgroundImage = img,
+                BackColor = Color.Black,
+                BackgroundImageLayout = ImageLayout.Stretch,
+            };
+
             plane.Controls.Add(pic);
             pic.Dock = DockStyle.Fill;
         }
 
-        [Obsolete("drawPlane(ref Panel) is deprecated, please use drawPlane(ref Panel, int) instead.", true)]
-        public void drawPlane(ref Panel plane) {
-           
+        [Obsolete("DrawPlane(ref Panel) is deprecated, please use drawPlane(ref Panel, int) instead.", true)]
+        public void DrawPlane(ref Panel plane) {
+
             plane.Controls.Clear();
-            numX = 0;
-            numY = 0;
+            this.numX = 0;
+            this.numY = 0;
 
             Random rnd = new Random();
             Size sz = plane.Size;
@@ -81,8 +83,8 @@ namespace Skork.ui {
 
             for (int y = 0; y < sz.Height; y += sizeUnit * sizeUnit) {
                 temp.X = 0;
-                numY++;
-                
+                this.numY++;
+
                 for (x = 0; x < sz.Width; x += sizeUnit * (sizeUnit / 2)) {
 
                     if (x + temp.X < sz.Width) {
@@ -93,26 +95,26 @@ namespace Skork.ui {
                         unit.Location = new Point(x + temp.X, y + temp.Y);
                         unit.BackColor = Color.FromArgb(255, rnd.Next(255), rnd.Next(255), rnd.Next(255));
                         unit.Click += Unit_Click;
-                        plane.Controls.Add(unit);                   
+                        plane.Controls.Add(unit);
                         temp.X += sizeUnit * 2;
                         temp.Y = 0;
-                        numX++;
+                        this.numX++;
 
                     } else {
                         continue;
                     }
                 }
             }
-            numX = numX / numY; // determine number of boxes on X-axis
+            this.numX = this.numX / this.numY; // determine number of boxes on X-axis
         }
 
         private void Unit_Click(object sender, EventArgs e) {
-            if (sender is PictureBox) {
-                PictureBox p = (PictureBox)sender;
-                MessageBox.Show(p.Location.ToString() + " = Number in x-axis " + numX + " - number in y-axis " + numY);
+            if (sender is PictureBox p) {
+                MessageBox.Show(p.Location.ToString() + " = Number in x-axis " +
+                    this.numX + " - number in y-axis " + this.numY);
                 return;
-            }            
+            }
             throw new Exception("Not a picturebox for some reason. - " + sender.ToString());
-        }        
+        }
     }
 }

@@ -39,23 +39,24 @@ namespace Skork.util {
             this.interval = 100;
 
             if (type.HasValue) {
-                this.outlineColor = (Color) type;
+                this.outlineColor = (Color)type;
             } else {
                 Random rnd = new Random();
-                outlineColor = Color.FromArgb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                this.outlineColor = Color.FromArgb(255, rnd.Next(256), rnd.Next(256), rnd.Next(256));
             }
 
-            outlineTimer.Interval = this.interval;
-            outlineTimer.Tick += outlineControl_Tick;
+            this.outlineTimer.Interval = this.interval;
+            this.outlineTimer.Tick += OutlineControl_Tick;
 
-            BackgroundWorker b = new BackgroundWorker();
-            b.WorkerSupportsCancellation = true;
-            b.WorkerReportsProgress = false;
-            b.DoWork += outlineControl_DoWork; // add handler
+            BackgroundWorker b = new BackgroundWorker {
+                WorkerSupportsCancellation = true,
+                WorkerReportsProgress = false
+            };
+            b.DoWork += OutlineControl_DoWork; // add handler
 
             p.BackColor = Color.Transparent;
-            outlineNumTimes = num;
-            outlineTimer.Start();
+            this.outlineNumTimes = num;
+            this.outlineTimer.Start();
             b.RunWorkerAsync(p); // gets passed into DoWork method as e.Argument
         }
 
@@ -67,17 +68,17 @@ namespace Skork.util {
         /// <param name="type">The color to pass.</param>
         /// <param name="num">Number of times to flicker the color.</param>
 
-        private void outlineControl_DoWork(object sender, DoWorkEventArgs e) {
+        private void OutlineControl_DoWork(object sender, DoWorkEventArgs e) {
 
             if (e.Argument is PictureBox) {
                 this.p = (PictureBox)e.Argument;
             } else {
-                throw new ArgumentException("Object passed is not a picturebox" + this.ToString());
+                throw new ArgumentException("Object passed is not a picturebox" + ToString());
             }
         }
 
-        private void outlineControl_Tick(object sender, EventArgs e) {
-            if (outlineNumTimes <= 0) {
+        private void OutlineControl_Tick(object sender, EventArgs e) {
+            if (this.outlineNumTimes <= 0) {
                 this.outlineTimer.Stop();
                 this.p.BackColor = this.outlineColor2;
             } else {

@@ -79,7 +79,7 @@
             this.tMain.SelectedIndex = 0;
             this.tMain.Size = new System.Drawing.Size(864, 491);
             this.tMain.TabIndex = 0;
-            this.tMain.SelectedIndexChanged += new System.EventHandler(this.tMain_SelectedIndexChanged);
+            this.tMain.SelectedIndexChanged += new System.EventHandler(this.TMain_SelectedIndexChanged);
             // 
             // tAbout
             // 
@@ -135,7 +135,7 @@
             this.picAbout.Size = new System.Drawing.Size(280, 280);
             this.picAbout.TabIndex = 0;
             this.picAbout.TabStop = false;
-            this.picAbout.Click += new System.EventHandler(this.picAbout_Click);
+            this.picAbout.Click += new System.EventHandler(this.PicAbout_Click);
             // 
             // tProject
             // 
