@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Skork.keywords;
 using System.Windows.Forms;
-using System.Collections;
-using Skork.util;
+using System;
+using Skork.functions;
 
 namespace Skork.util {
 
@@ -11,13 +11,12 @@ namespace Skork.util {
     /// </summary>
 
     class SkorkInstructions {
-                    // <Key, Value> //
-        private static Dictionary<string, int> ints;
+        // <Key, Value> //
+        public static Dictionary<string, int> ints;
         private static Dictionary<string, double> doubles;
         private static Dictionary<string, bool> bools;
         private static Dictionary<string, SkorkSprite> sprites;
         private SkorkConventions sc;
-
 
         static SkorkInstructions() {
             ints = new Dictionary<string, int>();
@@ -46,6 +45,63 @@ namespace Skork.util {
             return (dictionary.ContainsKey(name));
         }
 
+        public Type getFunctionType(string func) {
+            switch (func) {
+                case "sprite":
+                    return typeof(SkorkSprite);
+                case "loop":
+                    return null;
+                case "goto":
+                    return null;
+                case "who":
+                    return typeof(SkorkWho);
+                default: return null;
+            }
+        }
+
+        public Type getType(string type) {
+
+            switch (type) {
+                case "int":
+                    return typeof(int);
+                case "double":
+                    return typeof(double);
+                case "string":
+                    return typeof(string);
+                case "char":
+                    return typeof(char);
+                case "byte":
+                    return typeof(byte);
+                case "short":
+                    return typeof(short);
+                case "long":
+                    return typeof(long);
+                default: return null;
+            }
+        }
+
+        public Type getVariableType(string type) {
+            SkorkKeywords sk = new SkorkKeywords();
+            int i = 4;
+            foreach (string keyword in sk.getKeywords()) {
+                if (type.ToLower().Equals(keyword)) {
+                    Type t = getType(type.ToLower());
+                    return t;
+                }
+            }
+            return null;
+        }
+
+        public bool createKey(string type, string name, string value) {
+            SkorkKeywords sk = new SkorkKeywords();
+            foreach (string keyword in sk.getKeywords()) {
+                if (type.ToLower().Equals(keyword)) {
+                    Type t = keyword.GetType();
+                }
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// 
@@ -55,7 +111,7 @@ namespace Skork.util {
         /// <returns>If successful.</returns>
 
         public bool createKey(string name, int value) {
-            
+
             int ident = sc.isValidIdentifier(name);
             SkorkConsole c = new SkorkConsole();
 
@@ -66,8 +122,8 @@ namespace Skork.util {
                     } else {
                         ints.Add(new SkorkKeysID().ToString() + "\\" + name, value);
                         return true;
-                    }  
-                case 1:                    
+                    }
+                case 1:
                     MessageBox.Show(
                         name + " first character \"" + name[0] + "\" is invalid.",
                         "SkorkInvalidIdentifierException");
@@ -84,7 +140,6 @@ namespace Skork.util {
                         "SkorkInvalidIdentifierException");
                     break;
                 case 4:
-
                     MessageBox.Show(
                        name + " is a keyword! No variable can be a keyword.",
                        "SkorkInvalidIdentifierException");
@@ -92,9 +147,9 @@ namespace Skork.util {
 
             }
             return false;
-                                 
+
         }
-        
+
         public bool createKey(string name, double value) {
             if (containsKey(name, doubles)) {
                 return false;
@@ -123,7 +178,7 @@ namespace Skork.util {
         }
 
         public void temp() {
-            foreach(KeyValuePair<string, int> entry in ints) {
+            foreach (KeyValuePair<string, int> entry in ints) {
                 MessageBox.Show($"{entry.Key} = {entry.Value}");
             }
 

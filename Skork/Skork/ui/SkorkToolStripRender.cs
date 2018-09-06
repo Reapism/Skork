@@ -44,6 +44,7 @@ namespace Skork.ui {
         private void setRenderer(ref ToolStrip ts) {
             renderer = new ToolStripProfessionalRenderer(colorTable);
             ts.GripStyle = ToolStripGripStyle.Hidden;
+            ts.RenderMode = ToolStripRenderMode.Professional;
             ts.Renderer = this.renderer;
         }
 

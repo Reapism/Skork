@@ -20,7 +20,6 @@ namespace Skork.util {
         public SkorkCompile(string code) {
             this.code = new Util().getLines(code);
             cleanCode();
-            compile();
         }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Skork.util {
         public SkorkCompile(StringCollection code) {
             this.code = code;
             cleanCode();
-            compile();
         }
 
 

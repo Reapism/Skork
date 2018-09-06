@@ -9,7 +9,7 @@ namespace Skork.frm {
 
         private void frmDebug_Load(object sender, EventArgs e) {
             this.Icon = Properties.Resources.skork_icon;
-
+            
         }
     }
 }
