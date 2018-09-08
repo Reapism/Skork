@@ -39,8 +39,8 @@ namespace Skork.frm {
         }
 
         private void FrmSettings_Load(object sender, EventArgs e) {
-            addToLoad();
-            addHandlers();
+            AddToLoad();
+            AddHandlers();
         }
 
         private void AddToLoad() {
@@ -48,11 +48,11 @@ namespace Skork.frm {
             DownloadPicture d = new DownloadPicture();
 
             string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"ui\github_attr.txt");
-            txtReadME.AppendText(u.getString(u.getOnlineFile("https://raw.githubusercontent.com/Reapism/Skork/master/README.md")));
+            txtReadME.AppendText(u.GetString(u.GetOnlineFile("https://raw.githubusercontent.com/Reapism/Skork/master/README.md")));
             picAbout.BackgroundImage = Properties.Resources.skork;
             this.Icon = Properties.Resources.skork_icon;
             this.Text = this.tMain.SelectedTab.Text + " - Settings";
-            drawSettings(0);
+            DrawSettings(0);
         }
 
         /// <summary>
@@ -127,11 +127,11 @@ namespace Skork.frm {
 
         private string GetInfo(string path, string info = "bio") {
             Util u = new Util();
-            string file = u.readFile(path);
+            string file = u.ReadFile(path);
             MessageBox.Show(info);
             switch (info.ToLower()) {
                 case "bio":
-                    return (u.readUntil(file, 'b', '>'));
+                    return (u.ReadUntil(file, 'b', '>'));
                 case "project":
 
                 case "contributions":

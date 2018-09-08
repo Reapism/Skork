@@ -10,6 +10,7 @@ namespace Skork.ui {
 
         public void ParseText(string path, string attr) {
             Util u = new Util();
+            
             if (u.IsValidPath(path)) {
                 string txt = System.IO.File.ReadAllText(path);
 

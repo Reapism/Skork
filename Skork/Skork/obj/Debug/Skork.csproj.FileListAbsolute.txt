@@ -10,7 +10,6 @@ C:\Users\Reapism\AppData\Local\Temporary Projects\Skork\obj\Debug\Skork.pdb
 E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\Skork.exe.config
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.exe
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.pdb
-E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csprojResolveAssemblyReference.cache
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frmSkork.resources
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.Properties.Resources.resources
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csproj.GenerateResource.Cache
@@ -22,3 +21,5 @@ E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\resources\Skork.png
 E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\resources\skork_icon.ico
 E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.frm.frmDebug.resources
 E:\All Files\Programs\C#\Skork\Skork\Skork\bin\Debug\resources\github_attr.txt
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csprojAssemblyReference.cache
+E:\All Files\Programs\C#\Skork\Skork\Skork\obj\Debug\Skork.csproj.CoreCompileInputs.cache
