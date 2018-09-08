@@ -13,16 +13,6 @@ namespace Skork.util {
         private StringCollection code;
 
         /// <summary>
-        /// Converts string to string collection.
-        /// </summary>
-        /// <param name="code"></param>
-
-        public SkorkCompile(string code) {
-            this.code = new Util().GetLines(code);
-            CleanCode();
-        }
-
-        /// <summary>
         /// Takes a parsed string collection and
         /// converts it.
         /// </summary>
@@ -31,6 +21,8 @@ namespace Skork.util {
         public SkorkCompile(StringCollection code) {
             this.code = code;
             CleanCode();
+            SplitCode(ref this.code);
+            TestSplit();
         }
 
 
@@ -110,40 +102,55 @@ namespace Skork.util {
 
         private void CleanCode() {
             StringCollection newCode = new StringCollection();
-            string appendedLine = string.Empty;
+
 
             foreach (string line in this.code) {
-                MessageBox.Show(line);
-            }
+                int pos = line.IndexOf(' ');
 
-            foreach (string line in this.code) {
-                // somewhere in here need to remove
-                // trailing lines and spaces.
-                if (line.Contains(";")) {
-                    newCode.Add(line);
-                    appendedLine = string.Empty;
-
-                } else {
-                    appendedLine += line;
+                if (pos != -1) { // Checks if there is a space.
+                    string subStr = line.Substring(pos, line.IndexOf(' ', pos));
+                    MessageBox.Show(subStr);
+                    newCode.Add(subStr);
                 }
 
 
+
             }
+
             this.code = newCode;
 
-            foreach (string line in this.code) {
-                MessageBox.Show("after   " + line);
-            }
         }
 
+        /// <summary>
+        /// Attempts to convert multi-line code statements
+        /// into one line in Skork readable format.
+        /// SkorkReAdAbLeFoRmat
+        /// </summary>
 
+        private void SplitCode(ref StringCollection code) {
+            StringCollection newCode = new StringCollection();
+            string multiLine = string.Empty; //represents a line concatonated from different lines.
 
+            foreach (string line in code) {
+                multiLine += line;
+
+                if (multiLine.Contains(";")) {
+                    newCode.Add(multiLine);
+                    multiLine = string.Empty;
+                }
+
+                code = newCode;
+            }
+
+        }
         // A line is valid if it contains a keyword or variable name or comment.
         // int\hi\=\5;
 
         private string GetCodeLine(string line) {
             string codeLine = string.Empty;
             SkorkKeywords sk = new SkorkKeywords();
+            const char bs = '\\';
+
             if (line.Contains(";")) {
 
 
@@ -151,7 +158,7 @@ namespace Skork.util {
                 foreach (string keyword in sk.GetKeywords()) {
 
                     if (line.Contains(keyword)) {
-
+                        line = line.Trim();
                     }
                 }
             }
@@ -159,5 +166,14 @@ namespace Skork.util {
         }
 
 
+
+        public void TestSplit() {
+
+            foreach (string line in this.code) {
+                MessageBox.Show(line);
+            }
+
+
+        }
     }
 }
