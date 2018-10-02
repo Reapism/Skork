@@ -20,7 +20,7 @@ namespace Skork.util {
 
         public SkorkCompile(StringCollection code) {
             this.code = code;
-            CleanCode();
+            //CleanCode();
             SplitCode(ref this.code);
             TestSplit();
         }
@@ -44,54 +44,14 @@ namespace Skork.util {
         /// <returns></returns>
 
         private byte ParseCodeLine(string codeLine) {
-            SkorkKeywords sk = new SkorkKeywords();
+            SkorkKeyword sk = new SkorkKeyword();
             Util u = new Util();
 
             string line = string.Empty,
                 name = string.Empty;
             char[] trails = { '\n', ' ' };
 
-            if (codeLine.Contains(";")) {
-                line = u.GetLine(codeLine, ';').ToLower();
-
-                foreach (string function in sk.GetFunctions()) {
-                    if (line.Contains(function)) {
-                        //find out which function
-
-                        //tmp.Insert(tmp.IndexOf(function), "\\");
-                    }
-                }
-
-                foreach (string keyword in sk.GetKeywords()) {
-                    if (line.ToLower().Contains(keyword)) {
-                        line.Insert(line.IndexOf(keyword), "\\");
-                    }
-                }
-
-                foreach (string type in sk.GetTypes()) {
-                    if (line.Contains(type.ToLower())) {
-                        string tmp = string.Empty;
-                        int nextSpace = line.LastIndexOf(' ');
-
-                        while (nextSpace != -1) {
-                            tmp = line.Substring(0, line.LastIndexOf(' '));
-                            nextSpace = nextSpace + line.LastIndexOf(' ');
-                            MessageBox.Show(tmp);
-                        }
-
-
-                        line = line.TrimStart(trails);
-                        line = line.Insert(0, "\\");
-                        line = line.Insert(line.IndexOf(type), "\\");
-
-                    }
-                }
-
-                return 0;
-
-            } else {
-                return 1;
-            }
+            return 0;     
         }
 
         /// <summary>
@@ -148,14 +108,14 @@ namespace Skork.util {
 
         private string GetCodeLine(string line) {
             string codeLine = string.Empty;
-            SkorkKeywords sk = new SkorkKeywords();
+            SkorkKeyword sk = new SkorkKeyword();
             const char bs = '\\';
 
             if (line.Contains(";")) {
 
 
 
-                foreach (string keyword in sk.GetKeywords()) {
+                foreach (string keyword in sk.Keywords) {
 
                     if (line.Contains(keyword)) {
                         line = line.Trim();
