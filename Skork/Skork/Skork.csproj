@@ -95,12 +95,14 @@
       <DependentUpon>FrmUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\OperationPlus.cs" />
+    <Compile Include="functions\SkorkFunction.cs" />
     <Compile Include="functions\SkorkWho.cs" />
     <Compile Include="keywords\SkorkSprite.cs" />
-    <Compile Include="keywords\SkorkKeywords.cs" />
+    <Compile Include="keywords\SkorkKeyword.cs" />
     <Compile Include="keywords\SkorkSpriteDirection.cs" />
     <Compile Include="main\DriverProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="types\SkorkType.cs" />
     <Compile Include="ui\SkorkPlane.cs" />
     <Compile Include="ui\SkorkSettings.cs" />
     <Compile Include="ui\SkorkToolStripColorTable.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="util\SkorkConventions.cs" />
     <Compile Include="exceptions\SkorkException.cs" />
     <Compile Include="util\SkorkInstructions.cs" />
+    <Compile Include="util\SkorkParsing.cs" />
     <Compile Include="util\Update.cs" />
     <Compile Include="util\Util.cs" />
     <EmbeddedResource Include="frm\FrmDebug.resx">

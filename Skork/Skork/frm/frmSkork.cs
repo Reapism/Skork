@@ -294,5 +294,10 @@ namespace Skork {
         private void BtnPref_Click(object sender, EventArgs e) {
             new FrmSettings("Preferences").Show(this);
         }
+
+        private void checkIntTypeToolStripMenuItem_Click(object sender, EventArgs e) {
+            SkorkInstructions si = new SkorkInstructions();
+            si.Temp();
+        }
     }
 }

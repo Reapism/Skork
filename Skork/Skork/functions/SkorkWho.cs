@@ -7,7 +7,7 @@
     /// Usage new SkorkWho(object).ToString();
     /// </summary>
 
-    class SkorkWho {
+    class SkorkWho : SkorkFunction{
 
         private string who;
 

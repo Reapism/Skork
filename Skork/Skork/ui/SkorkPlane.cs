@@ -24,7 +24,7 @@ namespace Skork.ui {
         public Bitmap DrawGrid(int width, int height, int sizeOfPixel) {
             Bitmap b = new Bitmap(width, height);
             int x, y;
-
+            
             for (y = 0; y < height; y += sizeOfPixel) {
                 x = 0;
 

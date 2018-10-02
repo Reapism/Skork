@@ -4,7 +4,7 @@ namespace Skork.keywords {
     class SkorkSpriteDirection {
 
         public SkorkSpriteDirection() {
-
+            
         }
 
         /// <summary>

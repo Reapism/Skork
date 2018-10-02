@@ -95,6 +95,7 @@
             this.btn500 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCustomZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.checkIntTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCode.SuspendLayout();
             this.ctxCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSyntax)).BeginInit();
@@ -137,42 +138,43 @@
             this.btnCTXCompileDebug,
             this.btnCTXSave,
             this.getLiensToolStripMenuItem,
-            this.validIdentiferToolStripMenuItem});
+            this.validIdentiferToolStripMenuItem,
+            this.checkIntTypeToolStripMenuItem});
             this.ctxCode.Name = "ctxCode";
-            this.ctxCode.Size = new System.Drawing.Size(171, 114);
+            this.ctxCode.Size = new System.Drawing.Size(181, 158);
             // 
             // btnCTXCompile
             // 
             this.btnCTXCompile.Name = "btnCTXCompile";
-            this.btnCTXCompile.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXCompile.Size = new System.Drawing.Size(180, 22);
             this.btnCTXCompile.Text = "Compile";
             this.btnCTXCompile.Click += new System.EventHandler(this.BtnCTXCompile_Click);
             // 
             // btnCTXCompileDebug
             // 
             this.btnCTXCompileDebug.Name = "btnCTXCompileDebug";
-            this.btnCTXCompileDebug.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXCompileDebug.Size = new System.Drawing.Size(180, 22);
             this.btnCTXCompileDebug.Text = "Compile && Debug";
             this.btnCTXCompileDebug.Click += new System.EventHandler(this.BtnCTXCompileDebug_Click);
             // 
             // btnCTXSave
             // 
             this.btnCTXSave.Name = "btnCTXSave";
-            this.btnCTXSave.Size = new System.Drawing.Size(170, 22);
+            this.btnCTXSave.Size = new System.Drawing.Size(180, 22);
             this.btnCTXSave.Text = "Save";
             this.btnCTXSave.Click += new System.EventHandler(this.BtnCTXSave_Click);
             // 
             // getLiensToolStripMenuItem
             // 
             this.getLiensToolStripMenuItem.Name = "getLiensToolStripMenuItem";
-            this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.getLiensToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.getLiensToolStripMenuItem.Text = "GetLines";
             this.getLiensToolStripMenuItem.Click += new System.EventHandler(this.GetLiensToolStripMenuItem_Click);
             // 
             // validIdentiferToolStripMenuItem
             // 
             this.validIdentiferToolStripMenuItem.Name = "validIdentiferToolStripMenuItem";
-            this.validIdentiferToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.validIdentiferToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.validIdentiferToolStripMenuItem.Text = "ValidIdentifer";
             this.validIdentiferToolStripMenuItem.Click += new System.EventHandler(this.ValidIdentiferToolStripMenuItem_Click);
             // 
@@ -412,7 +414,7 @@
             // btnRedo
             // 
             this.btnRedo.Name = "btnRedo";
-            this.btnRedo.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.btnRedo.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.Z)));
             this.btnRedo.Size = new System.Drawing.Size(226, 22);
             this.btnRedo.Text = "Redo";
@@ -479,7 +481,7 @@
             // btnFindRepl
             // 
             this.btnFindRepl.Name = "btnFindRepl";
-            this.btnFindRepl.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.btnFindRepl.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.F)));
             this.btnFindRepl.Size = new System.Drawing.Size(226, 22);
             this.btnFindRepl.Text = "Find && Replace";
@@ -651,6 +653,13 @@
             this.tblMain.Size = new System.Drawing.Size(734, 414);
             this.tblMain.TabIndex = 5;
             // 
+            // checkIntTypeToolStripMenuItem
+            // 
+            this.checkIntTypeToolStripMenuItem.Name = "checkIntTypeToolStripMenuItem";
+            this.checkIntTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkIntTypeToolStripMenuItem.Text = "Check int type";
+            this.checkIntTypeToolStripMenuItem.Click += new System.EventHandler(this.checkIntTypeToolStripMenuItem_Click);
+            // 
             // FrmSkork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,6 +756,7 @@
         internal System.Windows.Forms.ToolStripDropDownButton btnView;
         internal System.Windows.Forms.ToolStripDropDownButton btnHelp;
         private System.Windows.Forms.ToolStripMenuItem btnSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem checkIntTypeToolStripMenuItem;
     }
 }
 
