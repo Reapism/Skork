@@ -60,8 +60,8 @@ namespace Skork.util {
 
             // Checks if the identifier is a keyword.
 
-            SkorkKeywords sk = new SkorkKeywords();
-            foreach (string keyword in sk.GetKeywords()) {
+            SkorkKeyword sk = new SkorkKeyword();
+            foreach (string keyword in sk.Keywords) {
                 if (identifier.ToLower().Equals(keyword)) {
                     return 4;
                 }

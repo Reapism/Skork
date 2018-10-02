@@ -10,7 +10,7 @@ namespace Skork.keywords {
     /// scenario.
     /// </summary>
 
-    class SkorkSprite : SkorkKeywords {
+    class SkorkSprite : SkorkKeyword {
 
         protected PictureBox sprite;
         protected string name;
