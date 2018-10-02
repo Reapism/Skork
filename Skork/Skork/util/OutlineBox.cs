@@ -32,11 +32,12 @@ namespace Skork.util {
 
         public OutlineBox(ref PictureBox p, Color? type, byte num = 3) {
             this.outlineNumTimes = num;
-            this.outlineColor = Color.White;
             this.outlineColor2 = Color.Transparent;
             this.outlineTimer = new Timer();
             this.p = p;
             this.interval = 100;
+
+            
 
             if (type.HasValue) {
                 this.outlineColor = (Color)type;
@@ -52,10 +53,10 @@ namespace Skork.util {
                 WorkerSupportsCancellation = true,
                 WorkerReportsProgress = false
             };
+            
             b.DoWork += OutlineControl_DoWork; // add handler
 
             p.BackColor = Color.Transparent;
-            this.outlineNumTimes = num;
             this.outlineTimer.Start();
             b.RunWorkerAsync(p); // gets passed into DoWork method as e.Argument
         }
