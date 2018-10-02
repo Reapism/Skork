@@ -59,6 +59,17 @@ namespace Skork.util {
             }
         }
 
+        private void TestGetType() {
+
+            Type test = GetType("int");
+
+            if (test.IsValueType && test == typeof(int)) {
+                MessageBox.Show("Yes it is.");
+                return;
+            }
+
+        }
+
         public Type GetType(string type) {
 
             switch (type) {
@@ -81,10 +92,10 @@ namespace Skork.util {
         }
 
         public Type GetVariableType(string type) {
-            SkorkKeywords sk = new SkorkKeywords();
+            SkorkKeyword sk = new SkorkKeyword();
             int i = 4;
 
-            foreach (string keyword in sk.GetKeywords()) {
+            foreach (string keyword in sk.Keywords) {
                 if (type.ToLower().Equals(keyword)) {
                     Type t = GetType(type.ToLower());
                     return t;
@@ -94,8 +105,9 @@ namespace Skork.util {
         }
 
         public bool CreateKey(string type, string name, string value) {
-            SkorkKeywords sk = new SkorkKeywords();
-            foreach (string keyword in sk.GetKeywords()) {
+            SkorkKeyword sk = new SkorkKeyword();
+
+            foreach (string keyword in sk.Keywords) {
                 if (type.ToLower().Equals(keyword)) {
                     Type t = keyword.GetType();
                 }

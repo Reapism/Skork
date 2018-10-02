@@ -133,18 +133,21 @@ namespace Skork.util {
         /// <returns>Returns a substring from s where a new line is contained.</returns>
 
         public string GetLine(string s) {
-            return s.Substring(0, s.LastIndexOf('\n'));
+            int i = s.LastIndexOf('\n');
+            return (i != -1) ? s.Substring(0, i): s + "\n";
         }
 
         /// <summary>
         /// Gets a line from a string from beginning to a specific character.
+        /// If character is not found, returns a string
         /// </summary>
         /// <param name="s">The string.</param>
         /// <param name="c">The character to terminate the substring.</param>
         /// <returns>Returns a substring from s where c is contained.</returns>
 
         public string GetLine(string s, char c) {
-            return s.Substring(0, s.LastIndexOf(c));
+            int i = s.LastIndexOf(c);
+            return (i != -1) ? s.Substring(0, i) : s + "\n";
         }
 
         /// <summary>
@@ -158,6 +161,20 @@ namespace Skork.util {
             for (int i = 0; i < s.Length; i++) {
                 if (s.ElementAt<char>(i) != c)
                     return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Determines if a character appears in a string. 
+        /// </summary>
+        /// <param name="s">The string to search.</param>
+        /// <param name="c">The character to compare.</param>
+        /// <returns></returns>
+
+        public bool DoesNotContain(string s, char c) {
+            for (int i = 0; i < s.Length; i++) {
+                if (s.ElementAt<char>(i) == c) { return false;}       
             }
             return true;
         }
