@@ -1,12 +1,9 @@
 # What is Skork?
-Skork is a custom compiler for a custom script like language for a sort of game.
-This description represents a prototype that is likely to be very different with 
-each commit. The reason for that is because I understand what the interface will
-look like but all the of intricate functionalities aren't completely thought out.
-
-This project is meant for the public coding community to browse and look at
-current Skork code. Feel free to fork it and make any update/addition/deletion
-you want. *But remember to do all such activities **in accordance
+Skork is a custom programming language for writing a game with rules you define.
+Skork allows you to test code in a visual way using sprites. This project is 
+meant for the public coding community to browse and look at current Skork code.
+Feel free to fork it and make any update/addition/deletion you want. 
+*But remember to do all such activities **in accordance
 to the current license.***
 
 # Why the name Skork?
@@ -32,5 +29,3 @@ code. It provides an easy way to visualize a ruleset or function. It might find 
 being used in coding competitions for designing most simplest game and all sorts of stuff.
 Since Skork is a major project, not all the design has been designed if that makes sense.
 I know most of the functionality I want to kickstart this project with but not all of it.
-
-
