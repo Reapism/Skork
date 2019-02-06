@@ -1,3 +1,11 @@
+# What's happening to Skork?
+Skork is put on hold for a moment. I currently am developing a few applications 
+in my final semester. I also have plans to remake what I currently have for
+in WPF. I will be open sourcing the GUI application of Skork. However, Skork
+will become a library which is not open-sourced. The GUI will only interact with
+the Skork library. It acts as an engine and the open source GUI is what will be
+open sourced for whoever to edit the layout, etc.
+
 # What is Skork?
 Skork is a custom programming language for writing a game with rules you define.
 Skork allows you to test code in a visual way using sprites. This project is 
